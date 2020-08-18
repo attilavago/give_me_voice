@@ -43,7 +43,31 @@ class TabsScreen extends StatelessWidget {
             floatingActionButton: FloatingActionButton.extended(
                 icon: Icon(Icons.add),
                 label: Text('New grid'),
-                onPressed: () {}
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          padding: EdgeInsets.all(20.0),
+                          child: Column(
+                            children: <Widget>[
+                              Text('Search for available choices and feelings.'),
+                              TextField(
+                                decoration: InputDecoration(
+                                  suffixIcon: MaterialButton(
+                                    child: Icon(Icons.search),
+                                      onPressed: (){}
+                                  ),
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Search',
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      }
+                  );
+                }
                 ),
           ),
         ),
