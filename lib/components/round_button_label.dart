@@ -13,7 +13,7 @@ class RoundButtonLabel extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.grey.shade700,
-          fontSize: 20.0,
+          fontSize: 17.0,
         ),
       ),
     );
