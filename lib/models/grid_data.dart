@@ -3,9 +3,7 @@ import 'package:give_me_voice/models/grid_item.dart';
 import 'dart:collection';
 
 class GridItemData extends ChangeNotifier {
-  List<GridItem> _gridItems = [
-    GridItem(image: 'happy', label: 'Happy'),
-  ];
+  List<GridItem> _gridItems = [];
 
   UnmodifiableListView<GridItem> get gridItems {
     return UnmodifiableListView(_gridItems);
