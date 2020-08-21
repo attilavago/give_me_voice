@@ -42,27 +42,16 @@ class _AddGridState extends State<AddGrid> {
             ),
             Text('Your grid items'),
             Expanded(
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                child: GridView.builder(
                     itemCount: gridData.gridItems.length,
-                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 6),
                     itemBuilder: (context, index){
                       final item = gridData.gridItems[index];
-                      return Row(
-                        children: <Widget>[
-                          Column(
-                          children: <Widget>[
-                            RoundButton(
-                              imageName: item.image,
-                              buttonAction: () {},
-                            ),
-                            RoundButtonLabel(
-                              label: item.label,
-                            ),
-                          ],
-                      ),
-
-                        ],
+                      return RoundButton(
+                        imageName: item.image,
+                        size: 35.0,
+                        padding: 5.0,
+                        buttonAction: () {},
                       );
                     })
         ),
