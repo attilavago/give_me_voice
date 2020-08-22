@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:give_me_voice/constants/colors.dart';
 import 'package:give_me_voice/screens/choices_screen.dart';
 import 'package:give_me_voice/screens/feelings_screen.dart';
-import 'package:provider/provider.dart';
-import 'package:give_me_voice/models/grid_data.dart';
-import 'package:give_me_voice/constants/emojis.dart';
-import 'package:give_me_voice/components/round_button.dart';
-import 'package:give_me_voice/components/round_button_label.dart';
+import 'package:give_me_voice/screens/grids_screen.dart';
 import 'package:give_me_voice/components/add_grid.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -17,29 +13,27 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  //var searchValue;
-  //GridItemData gridItems = GridItemData();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.grey.shade700,
             actions: <Widget>[
-            IconButton(
+              IconButton(
                 icon: Icon(Icons.menu),
-                onPressed: (){},
-            ),
-          ],
+                onPressed: () {},
+              ),
+            ],
             bottom: TabBar(
               tabs: [
                 Tab(
                   text: 'Choices',
                 ),
                 Tab(text: 'Feelings'),
+                Tab(text: 'My Grids'),
               ],
             ),
             title: Text('Give Me Voice'),
@@ -49,6 +43,7 @@ class _TabsScreenState extends State<TabsScreen> {
             children: [
               ChoicesScreen(),
               FeelingsScreen(),
+              GridsScreen(),
             ],
           ),
           floatingActionButton: FloatingActionButton.extended(
@@ -56,19 +51,15 @@ class _TabsScreenState extends State<TabsScreen> {
               label: Text('New grid'),
               onPressed: () {
                 showModalBottomSheet(
-                    context: context,
-                    builder: (context) => Container(
-                        padding: EdgeInsets.all(20.0),
-                        child: AddGrid(),
-                      ),
+                  context: context,
+                  builder: (context) => Container(
+                    padding: EdgeInsets.all(20.0),
+                    child: AddGrid(),
+                  ),
                 );
-              }
-              ),
+              }),
         ),
       ),
     );
   }
 }
-
-
-

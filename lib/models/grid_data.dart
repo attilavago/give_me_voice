@@ -20,20 +20,21 @@ class GridItemData extends ChangeNotifier {
     return _gridItems.length;
   }
 
-  void addGridItem(String newGridItemImage, String newGridItemLabel){
+  void addGridItem(String newGridItemImage, String newGridItemLabel) {
     final item = GridItem(image: newGridItemImage, label: newGridItemLabel);
     _gridItems.add(item);
     notifyListeners();
   }
 
-  void removeGridItem(GridItem gridItem){
+  void removeGridItem(GridItem gridItem) {
     _gridItems.remove(gridItem);
     notifyListeners();
   }
 
-  void addGridList(String name){
+  void addGridList(String name) {
     final grid = GridList(gridName: name, items: _gridItems);
     _gridLists.add(grid);
     print(_gridLists);
+    notifyListeners();
   }
 }
