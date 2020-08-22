@@ -6,6 +6,7 @@ import 'dart:collection';
 class GridItemData extends ChangeNotifier {
   List<GridItem> _gridItems = [];
   List<GridList> _gridLists = [];
+  int _activeCard;
 
   UnmodifiableListView<GridItem> get gridItems {
     return UnmodifiableListView(_gridItems);
@@ -16,7 +17,6 @@ class GridItemData extends ChangeNotifier {
   }
 
   int get itemCount {
-    print(_gridItems.length);
     return _gridItems.length;
   }
 
@@ -34,7 +34,21 @@ class GridItemData extends ChangeNotifier {
   void addGridList(String name) {
     final grid = GridList(gridName: name, items: _gridItems);
     _gridLists.add(grid);
-    print(_gridLists);
+    _gridItems = [];
     notifyListeners();
+  }
+
+  void removeGridList(GridList gridList) {
+    _gridLists.remove(gridList);
+    notifyListeners();
+  }
+
+  void setActiveCardIndex(int index) {
+    _activeCard = index;
+    notifyListeners();
+  }
+
+  int get activeCardIndex {
+    return _activeCard;
   }
 }

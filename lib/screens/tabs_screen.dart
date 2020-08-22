@@ -15,50 +15,48 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.grey.shade700,
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-            ],
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  text: 'Choices',
-                ),
-                Tab(text: 'Feelings'),
-                Tab(text: 'My Grids'),
-              ],
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.grey.shade700,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {},
             ),
-            title: Text('Give Me Voice'),
-          ),
-          backgroundColor: Color(kAppBackground),
-          body: TabBarView(
-            children: [
-              ChoicesScreen(),
-              FeelingsScreen(),
-              GridsScreen(),
+          ],
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                text: 'Choices',
+              ),
+              Tab(text: 'Feelings'),
+              Tab(text: 'My Grids'),
             ],
           ),
-          floatingActionButton: FloatingActionButton.extended(
-              icon: Icon(Icons.add),
-              label: Text('New grid'),
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => Container(
-                    padding: EdgeInsets.all(20.0),
-                    child: AddGrid(),
-                  ),
-                );
-              }),
+          title: Text('Give Me Voice'),
         ),
+        backgroundColor: Color(kAppBackground),
+        body: TabBarView(
+          children: [
+            ChoicesScreen(),
+            FeelingsScreen(),
+            GridsScreen(),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+            icon: Icon(Icons.add),
+            label: Text('New grid'),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: AddGrid(),
+                ),
+              );
+            }),
       ),
     );
   }

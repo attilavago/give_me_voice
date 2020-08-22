@@ -3,6 +3,7 @@ import 'package:give_me_voice/screens/welcome_screen.dart';
 import 'package:give_me_voice/screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
+import 'package:give_me_voice/screens/grid_screen.dart';
 
 void main() {
   runApp(GiveMeVoice());
@@ -18,9 +19,9 @@ class GiveMeVoice extends StatelessWidget {
         routes: {
           WelcomeScreen.id: (context) => WelcomeScreen(),
           TabsScreen.id: (context) => TabsScreen(),
+          GridScreen.id: (context) => GridScreen(),
         },
       ),
     );
   }
 }
-
