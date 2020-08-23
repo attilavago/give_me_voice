@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:give_me_voice/models/grid_list.dart';
+import 'package:give_me_voice/utils/extensions.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/components/round_button.dart';
@@ -16,7 +16,8 @@ class GridScreen extends StatelessWidget {
           backgroundColor: Colors.grey.shade700,
           title: Text(Provider.of<GridItemData>(context)
               .gridLists[gridData.activeCardIndex]
-              .gridName),
+              .gridName
+              .capitalize()),
         ),
         body: Padding(
           padding: const EdgeInsets.all(50.0),
