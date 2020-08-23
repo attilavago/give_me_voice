@@ -15,6 +15,10 @@ class GiveMeVoice extends StatelessWidget {
     return ChangeNotifierProvider(
       builder: (context) => GridItemData(),
       child: MaterialApp(
+        theme: ThemeData(
+            brightness: Brightness.light,
+            fontFamily: 'Montserrat',
+            backgroundColor: Color(0xFF6Ed58E)),
         initialRoute: WelcomeScreen.id,
         routes: {
           WelcomeScreen.id: (context) => WelcomeScreen(),

@@ -9,42 +9,51 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(kAppBackground),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-//          crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
                 'Give Me Voice',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontFamily: 'BalooThambi2',
                   color: Colors.grey.shade900,
-                  fontSize: 35.0,
+                  fontSize: 34.0,
+                ),
+              ),
+              Text(
+                'lite',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20.0,
                 ),
               ),
               SizedBox(
                 height: 20.0,
               ),
               Text(
-                'Bio ipsum dolor sit amet, consectetur adipiscing elit. Etiam leo magna, in lorem sit amet, scelerisque.',
+                'Communicate without words, with a single touch. Give voice to those who do not have one.',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey.shade700),
               ),
+              Text('Tap below to start your journey.'),
+              Text('For best experience, turn the sound on.'),
               SizedBox(
                 height: 20.0,
               ),
               RoundButton(
                 imageName: 'iloveyou',
-                buttonAction: (){
+                buttonAction: () {
                   Navigator.pushNamed(context, TabsScreen.id);
                 },
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
-                  'I love you',
+                  'I Love You',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey.shade700,

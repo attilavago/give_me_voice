@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_me_voice/utils/extensions.dart';
 
 class RoundButtonLabel extends StatelessWidget {
   const RoundButtonLabel({this.label});
@@ -9,7 +10,7 @@ class RoundButtonLabel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: Text(
-        label,
+        label.capitalize(),
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.grey.shade700,

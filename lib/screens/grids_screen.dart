@@ -3,6 +3,7 @@ import 'package:give_me_voice/models/grid_list.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 import 'package:give_me_voice/screens/grid_screen.dart';
+import 'package:give_me_voice/utils/extensions.dart';
 
 class GridsScreen extends StatelessWidget {
   const GridsScreen({
@@ -66,7 +67,7 @@ class GridsScreen extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text(grid.gridName),
+                              Text(grid.gridName.capitalize()),
                             ],
                           ),
                           Row(
