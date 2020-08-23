@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_me_voice/models/grid_list.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 import 'package:give_me_voice/screens/grid_screen.dart';
@@ -10,6 +11,41 @@ class GridsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog(GridList item) async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: true, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text('You are about to delete the "${item.gridName}" grid!'),
+                  Text('Is this really what you want?'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('No, leave it.'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
+                child: Text('Yes, delete.'),
+                onPressed: () {
+                  Provider.of<GridItemData>(context).removeGridList(item);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -46,8 +82,7 @@ class GridsScreen extends StatelessWidget {
                             children: [
                               OutlineButton.icon(
                                 onPressed: () {
-                                  Provider.of<GridItemData>(context)
-                                      .removeGridList(grid);
+                                  _showMyDialog(grid);
                                 },
                                 icon: Icon(Icons.delete),
                                 label: Text('Delete'),
