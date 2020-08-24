@@ -9,7 +9,7 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Color(0xFF41CE8F),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
           child: Column(
@@ -20,7 +20,6 @@ class WelcomeScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'BalooThambi2',
-                  color: Colors.grey.shade900,
                   fontSize: 34.0,
                 ),
               ),
@@ -32,17 +31,19 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 80.0,
               ),
               Text(
                 'Communicate without words, with a single touch. Give voice to those who do not have one.',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey.shade700),
+              ),
+              SizedBox(
+                height: 20.0,
               ),
               Text('Tap below to start your journey.'),
               Text('For best experience, turn the sound on.'),
               SizedBox(
-                height: 20.0,
+                height: 80.0,
               ),
               RoundButton(
                 imageName: 'iloveyou',
@@ -56,7 +57,6 @@ class WelcomeScreen extends StatelessWidget {
                   'I Love You',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.grey.shade700,
                     fontSize: 20.0,
                   ),
                 ),

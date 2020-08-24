@@ -13,7 +13,6 @@ class GridScreen extends StatelessWidget {
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade700,
           title: Text(Provider.of<GridItemData>(context)
               .gridLists[gridData.activeCardIndex]
               .gridName

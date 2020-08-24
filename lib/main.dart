@@ -17,8 +17,31 @@ class GiveMeVoice extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
             brightness: Brightness.light,
+            primaryColor: Color(0xFF41CE8F),
+            accentColor: Color(0xFF6ED85E),
             fontFamily: 'Montserrat',
-            backgroundColor: Color(0xFF6Ed58E)),
+            scaffoldBackgroundColor: Color(0xFFADC7CE),
+            primaryIconTheme: IconThemeData(
+              color: Color(0xFFF4F9FC),
+            ),
+            textTheme: TextTheme(
+              bodyText1: TextStyle(fontSize: 20.0),
+              bodyText2: TextStyle(fontSize: 16.0),
+              headline1: TextStyle(fontFamily: 'BalooThambi2'),
+              headline2: TextStyle(fontFamily: 'BalooThambi2'),
+              headline3: TextStyle(fontFamily: 'BalooThambi2'),
+              headline4: TextStyle(fontFamily: 'BalooThambi2'),
+              headline5: TextStyle(fontFamily: 'BalooThambi2'),
+              headline6: TextStyle(fontFamily: 'BalooThambi2'),
+            ),
+            appBarTheme: AppBarTheme(
+                textTheme: TextTheme(
+              headline6: TextStyle(
+                fontFamily: 'BalooThambi2',
+//                color: Color(0xFFF4F9FC),
+                fontSize: 28.0,
+              ),
+            ))),
         initialRoute: WelcomeScreen.id,
         routes: {
           WelcomeScreen.id: (context) => WelcomeScreen(),

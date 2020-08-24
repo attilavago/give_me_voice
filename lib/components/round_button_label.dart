@@ -13,7 +13,6 @@ class RoundButtonLabel extends StatelessWidget {
         label.capitalize(),
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.grey.shade700,
           fontSize: 17.0,
         ),
       ),

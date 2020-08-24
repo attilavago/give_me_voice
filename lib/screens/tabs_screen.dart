@@ -19,7 +19,6 @@ class _TabsScreenState extends State<TabsScreen> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade700,
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.menu),
@@ -37,7 +36,6 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           title: Text('Give Me Voice'),
         ),
-        backgroundColor: Color(kAppBackground),
         body: TabBarView(
           children: [
             ChoicesScreen(),
