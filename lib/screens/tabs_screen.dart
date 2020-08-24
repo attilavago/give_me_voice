@@ -44,13 +44,19 @@ class _TabsScreenState extends State<TabsScreen> {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
+            elevation: 1.0,
             icon: Icon(Icons.add),
-            label: Text('New grid'),
+            label: Text('NEW GRID'),
             onPressed: () {
               showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(10.0),
+                  ),
+                ),
                 context: context,
                 builder: (context) => Container(
-                  padding: EdgeInsets.all(20.0),
+//                  padding: EdgeInsets.all(20.0),
                   child: AddGrid(),
                 ),
               );

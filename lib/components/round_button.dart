@@ -19,7 +19,7 @@ class RoundButton extends StatelessWidget {
     return RawMaterialButton(
       onPressed: buttonAction,
       onLongPress: buttonLongAction,
-      elevation: 0,
+      elevation: 1.0,
       fillColor: Colors.white,
       splashColor: Color(0xFFCADAE0),
       child: Image.asset(

@@ -17,10 +17,10 @@ class GiveMeVoice extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
             brightness: Brightness.light,
-            primaryColor: Color(0xFF41CE8F),
-            accentColor: Color(0xFF6ED85E),
+            primaryColor: Color(0xFF2BAE66),
+            accentColor: Color(0xFF2BAE66),
             fontFamily: 'Montserrat',
-            scaffoldBackgroundColor: Color(0xFFADC7CE),
+            scaffoldBackgroundColor: Color(0xFFF4F9FC),
             primaryIconTheme: IconThemeData(
               color: Color(0xFFF4F9FC),
             ),
@@ -33,6 +33,10 @@ class GiveMeVoice extends StatelessWidget {
               headline4: TextStyle(fontFamily: 'BalooThambi2'),
               headline5: TextStyle(fontFamily: 'BalooThambi2'),
               headline6: TextStyle(fontFamily: 'BalooThambi2'),
+              button: TextStyle(fontFamily: 'BalooThambi2', fontSize: 18.0),
+            ),
+            bottomSheetTheme: BottomSheetThemeData(
+              backgroundColor: Color(0xFFF4F9FC),
             ),
             appBarTheme: AppBarTheme(
                 textTheme: TextTheme(

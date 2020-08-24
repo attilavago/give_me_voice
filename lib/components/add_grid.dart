@@ -21,63 +21,90 @@ class _AddGridState extends State<AddGrid> {
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Column(
         children: <Widget>[
-          Text('Search for available choices and feelings.'),
-          TextField(
-            controller: emojiInput,
-            onChanged: (value) {
-              searchValue = value;
-            },
-            decoration: InputDecoration(
-              suffixIcon: MaterialButton(
-                  child: Icon(Icons.search),
-                  onPressed: () {
-                    Provider.of<GridItemData>(context)
-                        .addGridItem(searchValue, searchValue);
-                    setState(() {
-                      emojiInput.clear();
-                    });
-                  }),
-              border: OutlineInputBorder(),
-              labelText: 'Search',
+          Container(
+            height: 10.0,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10.0),
+                topLeft: Radius.circular(10.0),
+              ),
             ),
           ),
-          Text('Your grid items'),
-          Text('Long press on an item to remove.'),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Text('Search for available choices and feelings.'),
+                TextField(
+                  controller: emojiInput,
+                  onChanged: (value) {
+                    searchValue = value;
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: MaterialButton(
+                        child: Icon(Icons.search),
+                        onPressed: () {
+                          Provider.of<GridItemData>(context)
+                              .addGridItem(searchValue, searchValue);
+                          setState(() {
+                            emojiInput.clear();
+                          });
+                        }),
+                    border: OutlineInputBorder(),
+                    labelText: 'Search',
+                  ),
+                ),
+                Text('Your grid items'),
+                Text('Long press on an item to remove.'),
+              ],
+            ),
+          ),
           Expanded(
-              child: GridView.builder(
-                  itemCount: gridData.gridItems.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 6),
-                  itemBuilder: (context, index) {
-                    final item = gridData.gridItems[index];
-                    return RoundButton(
-                      imageName: item.image,
-                      size: 35.0,
-                      padding: 5.0,
-                      buttonAction: () {},
-                      buttonLongAction: () {
-                        gridData.removeGridItem(item);
-                      },
-                    );
-                  })),
-          TextField(
-            controller: nameInput,
-            onChanged: (value) {
-              gridTitle = value;
-            },
-            decoration: InputDecoration(
-              suffixIcon: MaterialButton(
-                  child: Icon(Icons.save),
-                  onPressed: () {
-                    Provider.of<GridItemData>(context)
-                        .addGridList(gridTitle);
-                    setState(() {
-                      nameInput.clear();
-                    });
-                    Navigator.pop(context);
-                  }),
-              border: OutlineInputBorder(),
-              labelText: 'Name your grid',
+              child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView.builder(
+                itemCount: gridData.gridItems.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 6),
+                itemBuilder: (context, index) {
+                  final item = gridData.gridItems[index];
+                  return RoundButton(
+                    imageName: item.image,
+                    size: 35.0,
+                    padding: 5.0,
+                    buttonAction: () {},
+                    buttonLongAction: () {
+                      gridData.removeGridItem(item);
+                    },
+                  );
+                }),
+          )),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: nameInput,
+                  onChanged: (value) {
+                    gridTitle = value;
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: MaterialButton(
+                        child: Icon(Icons.save),
+                        onPressed: () {
+                          Provider.of<GridItemData>(context)
+                              .addGridList(gridTitle);
+                          setState(() {
+                            nameInput.clear();
+                          });
+                          Navigator.pop(context);
+                        }),
+                    border: OutlineInputBorder(),
+                    labelText: 'Name your grid',
+                  ),
+                ),
+              ],
             ),
           ),
         ],

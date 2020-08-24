@@ -5,34 +5,33 @@ import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 
 class ChoicesScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text('A grid to communicate core decisions'),
-        SizedBox(height: 30.0,),
-        RoundButton(
-          imageName: 'yes',
-          buttonAction: (){
-            Provider.of<GridItemData>(context).itemCount;
-          },
-        ),
-        RoundButtonLabel(
-          label: 'Yes ${Provider.of<GridItemData>(context).itemCount}',
-        ),
-        SizedBox(height: 30.0,),
-        RoundButton(
-          imageName: 'no',
-          buttonAction: (){
-            Provider.of<GridItemData>(context).addGridItem('booo', 'booo');
-          },
-        ),
-        RoundButtonLabel(
-          label: 'No',
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(40.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          RoundButton(
+            imageName: 'yes',
+            buttonAction: () {},
+          ),
+          RoundButtonLabel(
+            label: 'Yes',
+          ),
+          SizedBox(
+            height: 30.0,
+          ),
+          RoundButton(
+            imageName: 'no',
+            buttonAction: () {},
+          ),
+          RoundButtonLabel(
+            label: 'No',
+          ),
+        ],
+      ),
     );
   }
 }

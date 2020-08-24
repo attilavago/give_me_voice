@@ -9,93 +9,97 @@ class FeelingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text('A grid to communicate core feelings'),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'happy',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Happy',
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'sad',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Sad',
-                ),
-              ],
-            )
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'thinking',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Thinking',
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'unwell',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Unwell',
-                ),
-              ],
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'frightened',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Frightened',
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                RoundButton(
-                  imageName: 'angry',
-                  buttonAction: () {},
-                ),
-                RoundButtonLabel(
-                  label: 'Angry',
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(40.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'happy',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Happy',
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'sad',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Sad',
+                  ),
+                ],
+              )
+            ],
+          ),
+          SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'thinking',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Thinking',
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'unwell',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Unwell',
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'frightened',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Frightened',
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  RoundButton(
+                    imageName: 'angry',
+                    buttonAction: () {},
+                  ),
+                  RoundButtonLabel(
+                    label: 'Angry',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

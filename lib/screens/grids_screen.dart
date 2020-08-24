@@ -48,64 +48,67 @@ class GridsScreen extends StatelessWidget {
     }
 
     return Consumer<GridItemData>(builder: (context, gridData, child) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(Provider.of<GridItemData>(context).gridLists.length == 0
-              ? 'You currently have no grids. How about adding one?'
-              : 'Your grids'),
-          Expanded(
-            child: ListView.builder(
-                itemCount: gridData.gridLists.length,
-                itemBuilder: (context, index) {
-                  final grid = gridData.gridLists[index];
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(grid.gridName.capitalize()),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              for (var item in grid.items)
-                                Image.asset(
-                                  'images/${item.image}.png',
-                                  height: 30.0,
-                                )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              OutlineButton.icon(
-                                onPressed: () {
-                                  _showMyDialog(grid);
-                                },
-                                icon: Icon(Icons.delete),
-                                label: Text('Delete'),
-                              ),
-                              OutlineButton.icon(
-                                onPressed: () {
-                                  Provider.of<GridItemData>(context)
-                                      .setActiveCardIndex(index);
-                                  Navigator.pushNamed(context, GridScreen.id);
-                                },
-                                icon: Icon(Icons.remove_red_eye),
-                                label: Text('Open'),
-                              ),
-                            ],
-                          )
-                        ],
+      return Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            if (Provider.of<GridItemData>(context).gridLists.length == 0)
+              Text('You currently have no grids. How about adding one?',
+                  textAlign: TextAlign.center),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: gridData.gridLists.length,
+                  itemBuilder: (context, index) {
+                    final grid = gridData.gridLists[index];
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(grid.gridName.capitalize()),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                for (var item in grid.items)
+                                  Image.asset(
+                                    'images/${item.image}.png',
+                                    height: 30.0,
+                                  )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                OutlineButton.icon(
+                                  onPressed: () {
+                                    _showMyDialog(grid);
+                                  },
+                                  icon: Icon(Icons.delete),
+                                  label: Text('Delete'),
+                                ),
+                                OutlineButton.icon(
+                                  onPressed: () {
+                                    Provider.of<GridItemData>(context)
+                                        .setActiveCardIndex(index);
+                                    Navigator.pushNamed(context, GridScreen.id);
+                                  },
+                                  icon: Icon(Icons.remove_red_eye),
+                                  label: Text('Open'),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
-          )
-        ],
+                    );
+                  }),
+            )
+          ],
+        ),
       );
     });
   }
