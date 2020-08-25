@@ -68,28 +68,36 @@ class GridsScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(grid.gridName.capitalize()),
+                                Text(
+                                  grid.gridName.capitalize(),
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    _showMyDialog(grid);
+                                  },
+                                  icon: Icon(Icons.delete),
+                                  color: Theme.of(context).accentColor,
+                                ),
                               ],
                             ),
                             Row(
                               children: [
                                 for (var item in grid.items)
-                                  Image.asset(
-                                    'images/${item.image}.png',
-                                    height: 30.0,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 3.0),
+                                    child: Image.asset(
+                                      'images/${item.image}.png',
+                                      height: 30.0,
+                                    ),
                                   )
                               ],
                             ),
                             Row(
                               children: [
-                                OutlineButton.icon(
-                                  onPressed: () {
-                                    _showMyDialog(grid);
-                                  },
-                                  icon: Icon(Icons.delete),
-                                  label: Text('Delete'),
-                                ),
+                                SizedBox(height: 5.0),
                                 OutlineButton.icon(
                                   onPressed: () {
                                     Provider.of<GridItemData>(context)
@@ -98,6 +106,7 @@ class GridsScreen extends StatelessWidget {
                                   },
                                   icon: Icon(Icons.remove_red_eye),
                                   label: Text('Open'),
+                                  color: Theme.of(context).accentColor,
                                 ),
                               ],
                             )

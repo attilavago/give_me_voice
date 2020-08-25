@@ -34,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                 height: 80.0,
               ),
               Text(
-                'Communicate without words, with a single touch. Give voice to those who do not have one.',
+                'Communicate without words, with a single touch. Give voice to those who do not have!',
                 textAlign: TextAlign.center,
               ),
               SizedBox(

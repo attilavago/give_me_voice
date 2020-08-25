@@ -32,7 +32,8 @@ class GiveMeVoice extends StatelessWidget {
               headline3: TextStyle(fontFamily: 'BalooThambi2'),
               headline4: TextStyle(fontFamily: 'BalooThambi2'),
               headline5: TextStyle(fontFamily: 'BalooThambi2'),
-              headline6: TextStyle(fontFamily: 'BalooThambi2'),
+              headline6: TextStyle(
+                  fontFamily: 'BalooThambi2', color: Color(0xFF2BAE66)),
               button: TextStyle(fontFamily: 'BalooThambi2', fontSize: 18.0),
             ),
             bottomSheetTheme: BottomSheetThemeData(
