@@ -27,7 +27,7 @@ class GridScreen extends StatelessWidget {
                     itemCount: gridData
                         .gridLists[gridData.activeCardIndex].items.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+                        crossAxisCount: 2, mainAxisSpacing: 30.0),
                     itemBuilder: (context, index) {
                       final item = gridData
                           .gridLists[gridData.activeCardIndex].items[index];

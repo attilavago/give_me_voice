@@ -36,33 +36,56 @@ class _AddGridState extends State<AddGrid> {
             child: Column(
               children: [
                 Text('Search for available choices and feelings.'),
-                TextField(
-                  controller: emojiInput,
-                  onChanged: (value) {
-                    searchValue = value;
-                  },
-                  decoration: InputDecoration(
-                    suffixIcon: MaterialButton(
-                        child: Icon(Icons.search),
-                        onPressed: () {
-                          Provider.of<GridItemData>(context)
-                              .addGridItem(searchValue, searchValue);
-                          setState(() {
-                            emojiInput.clear();
-                          });
-                        }),
-                    border: OutlineInputBorder(),
-                    labelText: 'Search',
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: emojiInput,
+                    onChanged: (value) {
+                      searchValue = value;
+                    },
+                    decoration: InputDecoration(
+                      isDense: true, // Added this
+                      contentPadding:
+                          EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+                      suffixIcon: IconButton(
+                          icon: Icon(Icons.search),
+                          iconSize: 30.0,
+                          onPressed: () {
+                            Provider.of<GridItemData>(context)
+                                .addGridItem(searchValue, searchValue);
+                            setState(() {
+                              emojiInput.clear();
+                            });
+                          }),
+                      border: OutlineInputBorder(),
+                      labelText: 'Search',
+                    ),
                   ),
                 ),
-                Text('Your grid items'),
-                Text('Long press on an item to remove.'),
+                if (gridData.gridItems.length != 0)
+                  Column(
+                    children: [
+                      Text('Your grid items'),
+                      Text('Long press on an item to remove.'),
+                    ],
+                  ),
+                if (gridData.gridItems.length == 0)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'You have not added any "feelings" or "choices" yet. Try searching for some.',
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: GridView.builder(
                 itemCount: gridData.gridItems.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -84,24 +107,31 @@ class _AddGridState extends State<AddGrid> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                TextField(
-                  controller: nameInput,
-                  onChanged: (value) {
-                    gridTitle = value;
-                  },
-                  decoration: InputDecoration(
-                    suffixIcon: MaterialButton(
-                        child: Icon(Icons.save),
-                        onPressed: () {
-                          Provider.of<GridItemData>(context)
-                              .addGridList(gridTitle);
-                          setState(() {
-                            nameInput.clear();
-                          });
-                          Navigator.pop(context);
-                        }),
-                    border: OutlineInputBorder(),
-                    labelText: 'Name your grid',
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: TextField(
+                    controller: nameInput,
+                    onChanged: (value) {
+                      gridTitle = value;
+                    },
+                    decoration: InputDecoration(
+                      isDense: true, // Added this
+                      contentPadding:
+                          EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+                      suffixIcon: IconButton(
+                          icon: Icon(Icons.save),
+                          iconSize: 30.0,
+                          onPressed: () {
+                            Provider.of<GridItemData>(context)
+                                .addGridList(gridTitle);
+                            setState(() {
+                              nameInput.clear();
+                            });
+                            Navigator.pop(context);
+                          }),
+                      border: OutlineInputBorder(),
+                      labelText: 'Name your grid',
+                    ),
                   ),
                 ),
               ],
