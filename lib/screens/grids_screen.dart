@@ -11,7 +11,7 @@ class GridsScreen extends StatefulWidget {
 }
 
 class _GridsScreenState extends State<GridsScreen> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     Future<void> _showMyDialog(GridList item) async {
@@ -39,9 +39,7 @@ class _GridsScreenState extends State<GridsScreen> {
               FlatButton(
                 child: Text('Yes, delete.'),
                 onPressed: () {
-                  setState(() {
-                    Provider.of<GridItemData>(context).removeGridList(item);
-                  });
+                  Provider.of<GridItemData>(context).removeGridList(item);
                   Navigator.of(context).pop();
                 },
               ),
@@ -68,10 +66,39 @@ class _GridsScreenState extends State<GridsScreen> {
                     final grid = gridData.gridLists[index];
                     return Dismissible(
                       key: UniqueKey(),
+                      direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
-                        _showMyDialog(grid);
+                        setState(() {
+                          Provider.of<GridItemData>(context)
+                              .removeGridList(grid);
+                        });
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                                'The "${grid.gridName.capitalize()}" grid has been deleted!')));
                       },
-                      background: Container(color: Colors.red),
+                      background: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(30.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              'delete',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
                       child: Card(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
