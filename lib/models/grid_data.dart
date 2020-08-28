@@ -2,11 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:give_me_voice/models/grid_item.dart';
 import 'package:give_me_voice/models/grid_list.dart';
 import 'dart:collection';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class GridItemData extends ChangeNotifier {
   List<GridItem> _gridItems = [];
   List<GridList> _gridLists = [];
   int _activeCard;
+  FlutterTts flutterTts = FlutterTts();
 
   UnmodifiableListView<GridItem> get gridItems {
     return UnmodifiableListView(_gridItems);
@@ -50,5 +52,12 @@ class GridItemData extends ChangeNotifier {
 
   int get activeCardIndex {
     return _activeCard;
+  }
+
+  Future playGridItem(String itemLabel) async {
+    var result = await flutterTts.speak(itemLabel);
+    if (result == 1) {
+      print(itemLabel);
+    }
   }
 }

@@ -37,7 +37,9 @@ class GridScreen extends StatelessWidget {
                             imageName: item.image,
                             size: 70.0,
                             padding: 15.0,
-                            buttonAction: () {},
+                            buttonAction: () async {
+                              await gridData.playGridItem(item.label);
+                            },
                             buttonLongAction: () {},
                           ),
                           RoundButtonLabel(
