@@ -18,6 +18,7 @@ class _TabsScreenState extends State<TabsScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           actions: <Widget>[
             IconButton(
@@ -49,6 +50,7 @@ class _TabsScreenState extends State<TabsScreen> {
             label: Text('NEW GRID'),
             onPressed: () {
               showModalBottomSheet(
+                isScrollControlled: true,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(10.0),
@@ -56,6 +58,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 context: context,
                 builder: (context) => Container(
+                  height: 300,
 //                  padding: EdgeInsets.all(20.0),
                   child: AddGrid(),
                 ),

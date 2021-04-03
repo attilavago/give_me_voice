@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:give_me_voice/components/round_button.dart';
 import 'package:give_me_voice/components/round_button_label.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class FeelingsScreen extends StatelessWidget {
   const FeelingsScreen({
     Key key,
   }) : super(key: key);
+  static FlutterTts flutterTts = FlutterTts();
+
+  Future playGridItem(String itemLabel) async {
+    var result = await flutterTts.speak(itemLabel);
+    if (result == 1) {
+      print(itemLabel);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'happy',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Happy');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Happy',
@@ -33,7 +44,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'sad',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Sad');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Sad',
@@ -50,7 +63,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'thinking',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Thinking');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Thinking',
@@ -61,7 +76,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'unwell',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Unwell');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Unwell',
@@ -78,7 +95,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'frightened',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Frightened');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Frightened',
@@ -89,7 +108,9 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'angry',
-                    buttonAction: () {},
+                    buttonAction: () {
+                      playGridItem('Angry');
+                    },
                   ),
                   RoundButtonLabel(
                     label: 'Angry',

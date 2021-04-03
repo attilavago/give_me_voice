@@ -3,8 +3,17 @@ import 'package:give_me_voice/components/round_button.dart';
 import 'package:give_me_voice/components/round_button_label.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class ChoicesScreen extends StatelessWidget {
+  static FlutterTts flutterTts = FlutterTts();
+  Future playGridItem(String itemLabel) async {
+    var result = await flutterTts.speak(itemLabel);
+    if (result == 1) {
+      print(itemLabel);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +24,9 @@ class ChoicesScreen extends StatelessWidget {
         children: <Widget>[
           RoundButton(
             imageName: 'yes',
-            buttonAction: () {},
+            buttonAction: () {
+              playGridItem('Yes');
+            },
           ),
           RoundButtonLabel(
             label: 'Yes',
@@ -25,7 +36,9 @@ class ChoicesScreen extends StatelessWidget {
           ),
           RoundButton(
             imageName: 'no',
-            buttonAction: () {},
+            buttonAction: () {
+              playGridItem('No');
+            },
           ),
           RoundButtonLabel(
             label: 'No',

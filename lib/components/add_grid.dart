@@ -3,6 +3,7 @@ import 'package:give_me_voice/models/grid_data.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/components/round_button.dart';
 import 'package:give_me_voice/components/round_button_label.dart';
+import 'package:give_me_voice/utils/db_connector.dart';
 
 class AddGrid extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class AddGrid extends StatefulWidget {
 }
 
 class _AddGridState extends State<AddGrid> {
+  MyGridsDataBaseConnector _myGridsDataBaseConnector =
+      MyGridsDataBaseConnector();
   String searchValue;
   String gridTitle;
 
@@ -18,6 +21,9 @@ class _AddGridState extends State<AddGrid> {
 
   @override
   Widget build(BuildContext context) {
+    _myGridsDataBaseConnector.initializeDatabase().then((value) {
+      print('----database initialized-----');
+    });
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Column(
         children: <Widget>[
@@ -37,7 +43,7 @@ class _AddGridState extends State<AddGrid> {
               children: [
                 Text('Search for available choices and feelings.'),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: TextField(
                     controller: emojiInput,
                     onChanged: (value) {
@@ -62,13 +68,6 @@ class _AddGridState extends State<AddGrid> {
                     ),
                   ),
                 ),
-                if (gridData.gridItems.length != 0)
-                  Column(
-                    children: [
-                      Text('Your grid items'),
-                      Text('Long press on an item to remove.'),
-                    ],
-                  ),
                 if (gridData.gridItems.length == 0)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
