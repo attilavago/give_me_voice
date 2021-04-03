@@ -30,16 +30,17 @@ class _GridsScreenState extends State<GridsScreen> {
               ),
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('No, leave it.'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text('Yes, delete.'),
                 onPressed: () {
-                  Provider.of<GridItemData>(context).removeGridList(item);
+                  Provider.of<GridItemData>(context, listen: false)
+                      .removeGridList(item);
                   Navigator.of(context).pop();
                 },
               ),
@@ -142,8 +143,7 @@ class _GridsScreenState extends State<GridsScreen> {
                                         borderRadius:
                                             BorderRadius.circular(18.0)),
                                     onPressed: () {
-                                      Provider.of<GridItemData>(context)
-                                          .setActiveCardIndex(index);
+                                      gridData.setActiveCardIndex(index);
                                       Navigator.pushNamed(
                                           context, GridScreen.id);
                                     },

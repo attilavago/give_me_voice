@@ -23,6 +23,7 @@ class GridItemData extends ChangeNotifier {
   }
 
   void addGridItem(String newGridItemImage, String newGridItemLabel) {
+    print(newGridItemLabel);
     final item = GridItem(image: newGridItemImage, label: newGridItemLabel);
     _gridItems.add(item);
     notifyListeners();

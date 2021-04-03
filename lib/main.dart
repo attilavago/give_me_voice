@@ -13,7 +13,7 @@ class GiveMeVoice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      builder: (context) => GridItemData(),
+      create: (context) => GridItemData(),
       child: MaterialApp(
         theme: ThemeData(
             brightness: Brightness.light,

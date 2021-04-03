@@ -42,17 +42,17 @@ class _AddGridState extends State<AddGrid> {
                     controller: emojiInput,
                     onChanged: (value) {
                       searchValue = value;
+                      print(searchValue);
                     },
                     decoration: InputDecoration(
-                      isDense: true, // Added this
+                      isDense: true,
                       contentPadding:
                           EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
                       suffixIcon: IconButton(
                           icon: Icon(Icons.search),
                           iconSize: 30.0,
                           onPressed: () {
-                            Provider.of<GridItemData>(context)
-                                .addGridItem(searchValue, searchValue);
+                            gridData.addGridItem(searchValue, searchValue);
                             setState(() {
                               emojiInput.clear();
                             });
@@ -122,8 +122,7 @@ class _AddGridState extends State<AddGrid> {
                           icon: Icon(Icons.save),
                           iconSize: 30.0,
                           onPressed: () {
-                            Provider.of<GridItemData>(context)
-                                .addGridList(gridTitle);
+                            gridData.addGridList(gridTitle);
                             setState(() {
                               nameInput.clear();
                             });
