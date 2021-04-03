@@ -122,6 +122,9 @@ class _AddGridState extends State<AddGrid> {
                           iconSize: 30.0,
                           onPressed: () {
                             gridData.addGridList(gridTitle);
+                            _myGridsDataBaseConnector.insertGridItem(
+                                'some name', 'label1', 'image1');
+                            _myGridsDataBaseConnector.getTimers();
                             setState(() {
                               nameInput.clear();
                             });

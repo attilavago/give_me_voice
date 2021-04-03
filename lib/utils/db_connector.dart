@@ -54,4 +54,12 @@ class MyGridsDataBaseConnector {
         tableMyGrids, {"name": name, "labels": labels, "images": images});
     print('result is $result');
   }
+
+  Future<List> getTimers() async {
+    List _grids = [];
+    var db = await (this.database);
+    var result = await db.query(tableMyGrids);
+    print(result);
+    return _grids;
+  }
 }
