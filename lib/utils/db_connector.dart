@@ -55,11 +55,13 @@ class MyGridsDataBaseConnector {
     print('result is $result');
   }
 
-  Future<List> getTimers() async {
+  Future<List> getGrids() async {
     List _grids = [];
     var db = await (this.database);
     var result = await db.query(tableMyGrids);
-    print(result);
+    result.forEach((grid) {
+      _grids.add(grid);
+    });
     return _grids;
   }
 }

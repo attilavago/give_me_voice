@@ -130,7 +130,7 @@ class _AddGridState extends State<AddGrid> {
                                 nameInput.text,
                                 labels.join(','),
                                 images.join(','));
-                            _myGridsDataBaseConnector.getTimers();
+                            _myGridsDataBaseConnector.getGrids();
                             setState(() {
                               nameInput.clear();
                             });
