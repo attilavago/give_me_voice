@@ -20,41 +20,40 @@ class _GridsScreenState extends State<GridsScreen> {
     _myGridsDataBaseConnector.initializeDatabase().then((value) {
       print('----database initialized from grids list-----');
     });
-    // Future<void> _showMyDialog(GridList item) async {
-    //   return showDialog<void>(
-    //     context: context,
-    //     barrierDismissible: true,
-    //     builder: (BuildContext context) {
-    //       return AlertDialog(
-    //         title: Text('Are you sure?'),
-    //         content: SingleChildScrollView(
-    //           child: ListBody(
-    //             children: <Widget>[
-    //               Text('You are about to delete the "${item.gridName}" grid!'),
-    //               Text('Is this really what you want?'),
-    //             ],
-    //           ),
-    //         ),
-    //         actions: <Widget>[
-    //           TextButton(
-    //             child: Text('No, leave it.'),
-    //             onPressed: () {
-    //               Navigator.of(context).pop();
-    //             },
-    //           ),
-    //           TextButton(
-    //             child: Text('Yes, delete.'),
-    //             onPressed: () {
-    //               Provider.of<GridItemData>(context, listen: false)
-    //                   .removeGridList(item);
-    //               Navigator.of(context).pop();
-    //             },
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
-    // }
+    Future<void> _showMyDialog(gridId, gridName) async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text('You are about to delete the "${gridName}" grid!'),
+                  Text('Is this really what you want?'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('No, leave it.'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text('Yes, delete.'),
+                onPressed: () {
+                  // remove grid
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
 
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return FutureBuilder<List>(
@@ -129,7 +128,8 @@ class _GridsScreenState extends State<GridsScreen> {
                                         ),
                                         IconButton(
                                           onPressed: () {
-                                            //_showMyDialog(grid);
+                                            _showMyDialog(
+                                                grid['id'], grid['name']);
                                           },
                                           icon: Icon(Icons.delete),
                                           color: Theme.of(context).accentColor,
