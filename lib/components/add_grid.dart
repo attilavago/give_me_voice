@@ -18,6 +18,8 @@ class _AddGridState extends State<AddGrid> {
 
   final emojiInput = TextEditingController();
   final nameInput = TextEditingController();
+  List labels = [];
+  List images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,8 @@ class _AddGridState extends State<AddGrid> {
                           iconSize: 30.0,
                           onPressed: () {
                             gridData.addGridItem(searchValue, searchValue);
+                            labels.add(searchValue);
+                            images.add(searchValue);
                             setState(() {
                               emojiInput.clear();
                             });
@@ -123,7 +127,9 @@ class _AddGridState extends State<AddGrid> {
                           onPressed: () {
                             gridData.addGridList(gridTitle);
                             _myGridsDataBaseConnector.insertGridItem(
-                                'some name', 'label1', 'image1');
+                                nameInput.text,
+                                labels.join(','),
+                                images.join(','));
                             _myGridsDataBaseConnector.getTimers();
                             setState(() {
                               nameInput.clear();
