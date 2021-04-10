@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:give_me_voice/models/grid_list.dart';
+import 'package:give_me_voice/screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 import 'package:give_me_voice/screens/grid_screen.dart';
@@ -20,7 +21,7 @@ class _GridsScreenState extends State<GridsScreen> {
     _myGridsDataBaseConnector.initializeDatabase().then((value) {
       print('----database initialized from grids list-----');
     });
-    Future<void> _showMyDialog(gridId, gridName) async {
+    Future<void> _showMyDialog(gridId, gridName, context) async {
       return showDialog<void>(
         context: context,
         barrierDismissible: true,
@@ -46,7 +47,7 @@ class _GridsScreenState extends State<GridsScreen> {
                 child: Text('Yes, delete.'),
                 onPressed: () {
                   _myGridsDataBaseConnector.deleteGrid(gridId);
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pop(true);
                 },
               ),
             ],
@@ -129,8 +130,9 @@ class _GridsScreenState extends State<GridsScreen> {
                                         ),
                                         IconButton(
                                           onPressed: () {
-                                            _showMyDialog(
-                                                grid['id'], grid['name']);
+                                            _showMyDialog(grid['id'],
+                                                    grid['name'], context)
+                                                .then((_) => setState(() {}));
                                           },
                                           icon: Icon(Icons.delete),
                                           color: Theme.of(context).accentColor,
