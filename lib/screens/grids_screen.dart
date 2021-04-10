@@ -45,7 +45,7 @@ class _GridsScreenState extends State<GridsScreen> {
               TextButton(
                 child: Text('Yes, delete.'),
                 onPressed: () {
-                  // remove grid
+                  _myGridsDataBaseConnector.deleteGrid(gridId);
                   Navigator.of(context).pop();
                 },
               ),
@@ -82,11 +82,12 @@ class _GridsScreenState extends State<GridsScreen> {
                             direction: DismissDirection.endToStart,
                             onDismissed: (direction) {
                               setState(() {
-                                // remove grid
+                                _myGridsDataBaseConnector
+                                    .deleteGrid(grid['id']);
                               });
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text(
-                                      'The "${grid['name'].capitalize()}" grid has been deleted!')));
+                                      'The "${grid['name']}" grid has been deleted!')));
                             },
                             background: Container(
                               decoration: BoxDecoration(

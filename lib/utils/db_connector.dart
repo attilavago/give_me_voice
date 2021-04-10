@@ -64,4 +64,10 @@ class MyGridsDataBaseConnector {
     });
     return _grids;
   }
+
+  Future<int> deleteGrid(int id) async {
+    var db = await (this.database);
+    return await db
+        .delete(tableMyGrids, where: '$columnId = ?', whereArgs: [id]);
+  }
 }
