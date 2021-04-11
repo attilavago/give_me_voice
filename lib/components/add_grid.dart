@@ -41,46 +41,10 @@ class _AddGridState extends State<AddGrid> {
           ),
           Column(
             children: [
-              Text('Add up to 6 emojis to your grid'),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 20.0),
-              //   child: TextField(
-              //     controller: emojiInput,
-              //     onChanged: (value) {
-              //       searchValue = value;
-              //       print(searchValue);
-              //     },
-              //     decoration: InputDecoration(
-              //       isDense: true,
-              //       contentPadding:
-              //           EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
-              //       suffixIcon: IconButton(
-              //           icon: Icon(Icons.search),
-              //           iconSize: 30.0,
-              //           onPressed: () {
-              //             gridData.addGridItem(searchValue, searchValue);
-              //             labels.add(searchValue);
-              //             images.add(searchValue);
-              //             setState(() {
-              //               emojiInput.clear();
-              //             });
-              //           }),
-              //       border: OutlineInputBorder(),
-              //       labelText: 'Search',
-              //     ),
-              //   ),
-              // ),
-              // if (gridData.gridItems.length == 0)
-              //   Column(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Text(
-              //         'You have not added any "feelings" or "choices" yet. Try searching for some.',
-              //         textAlign: TextAlign.center,
-              //       ),
-              //     ],
-              //   ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Text('Add up to 6 emojis to your grid'),
+              ),
             ],
           ),
           Expanded(

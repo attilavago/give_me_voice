@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:give_me_voice/models/grid_list.dart';
-import 'package:give_me_voice/screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:give_me_voice/models/grid_data.dart';
 import 'package:give_me_voice/screens/grid_screen.dart';
@@ -31,7 +29,8 @@ class _GridsScreenState extends State<GridsScreen> {
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text('You are about to delete the "${gridName}" grid!'),
+                  Text(
+                      'You are about to delete the "${gridName.toString().capitalize()}" grid!'),
                   Text('Is this really what you want?'),
                 ],
               ),
