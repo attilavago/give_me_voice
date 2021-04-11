@@ -27,7 +27,7 @@ class GridScreen extends StatelessWidget {
             var gridLength = gridLabels.length;
             return Scaffold(
               appBar: AppBar(
-                title: Text(grid['name']),
+                title: Text(grid['name'].toString().capitalize()),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(50.0),
@@ -53,7 +53,7 @@ class GridScreen extends StatelessWidget {
                                   buttonLongAction: () {},
                                 ),
                                 RoundButtonLabel(
-                                  label: item,
+                                  label: item.capitalize(),
                                 )
                               ],
                             );
@@ -61,17 +61,6 @@ class GridScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text('blaaaaah', textAlign: TextAlign.center),
-                ],
               ),
             );
           }

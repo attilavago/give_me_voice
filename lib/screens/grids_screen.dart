@@ -88,7 +88,7 @@ class _GridsScreenState extends State<GridsScreen> {
                               });
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text(
-                                      'The "${grid['name']}" grid has been deleted!')));
+                                      'The "${grid['name'].toString().capitalize()}" grid has been deleted!')));
                             },
                             background: Container(
                               decoration: BoxDecoration(
@@ -123,7 +123,7 @@ class _GridsScreenState extends State<GridsScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          grid['name'],
+                                          grid['name'].toString().capitalize(),
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline6,
