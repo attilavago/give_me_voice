@@ -58,7 +58,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 context: context,
                 builder: (context) => Container(
-                  height: 300,
+                  height: 500,
 //                  padding: EdgeInsets.all(20.0),
                   child: AddGrid(),
                 ),

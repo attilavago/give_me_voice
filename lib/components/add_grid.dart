@@ -39,53 +39,71 @@ class _AddGridState extends State<AddGrid> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Text('Search for available choices and feelings.'),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextField(
-                    controller: emojiInput,
-                    onChanged: (value) {
-                      searchValue = value;
-                      print(searchValue);
-                    },
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding:
-                          EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.search),
-                          iconSize: 30.0,
-                          onPressed: () {
-                            gridData.addGridItem(searchValue, searchValue);
-                            labels.add(searchValue);
-                            images.add(searchValue);
-                            setState(() {
-                              emojiInput.clear();
-                            });
-                          }),
-                      border: OutlineInputBorder(),
-                      labelText: 'Search',
-                    ),
-                  ),
-                ),
-                if (gridData.gridItems.length == 0)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'You have not added any "feelings" or "choices" yet. Try searching for some.',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-              ],
-            ),
+          Column(
+            children: [
+              Text('Add up to 6 emojis to your grid'),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 20.0),
+              //   child: TextField(
+              //     controller: emojiInput,
+              //     onChanged: (value) {
+              //       searchValue = value;
+              //       print(searchValue);
+              //     },
+              //     decoration: InputDecoration(
+              //       isDense: true,
+              //       contentPadding:
+              //           EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+              //       suffixIcon: IconButton(
+              //           icon: Icon(Icons.search),
+              //           iconSize: 30.0,
+              //           onPressed: () {
+              //             gridData.addGridItem(searchValue, searchValue);
+              //             labels.add(searchValue);
+              //             images.add(searchValue);
+              //             setState(() {
+              //               emojiInput.clear();
+              //             });
+              //           }),
+              //       border: OutlineInputBorder(),
+              //       labelText: 'Search',
+              //     ),
+              //   ),
+              // ),
+              // if (gridData.gridItems.length == 0)
+              //   Column(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Text(
+              //         'You have not added any "feelings" or "choices" yet. Try searching for some.',
+              //         textAlign: TextAlign.center,
+              //       ),
+              //     ],
+              //   ),
+            ],
           ),
+          Expanded(
+              child: Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
+            child: GridView.builder(
+                itemCount: gridData.feelings.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 6),
+                itemBuilder: (context, index) {
+                  final item = gridData.feelings[index];
+                  return RoundButton(
+                    imageName: item,
+                    size: 35.0,
+                    padding: 5.0,
+                    buttonAction: () {
+                      gridData.addGridItem(item, item);
+                      labels.add(item);
+                      images.add(item);
+                    },
+                  );
+                }),
+          )),
           Expanded(
               child: Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20),

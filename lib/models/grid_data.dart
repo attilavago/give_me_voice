@@ -7,6 +7,20 @@ import 'package:flutter_tts/flutter_tts.dart';
 class GridItemData extends ChangeNotifier {
   List<GridItem> _gridItems = [];
   List<GridList> _gridLists = [];
+  List<String> _feelings = [
+    'angry',
+    'frightened',
+    'happy',
+    'sad',
+    'thinking',
+    'unwell',
+    'angry',
+    'frightened',
+    'happy',
+    'sad',
+    'thinking',
+    'unwell'
+  ];
   int _activeCard;
   FlutterTts flutterTts = FlutterTts();
 
@@ -22,8 +36,11 @@ class GridItemData extends ChangeNotifier {
     return _gridItems.length;
   }
 
+  List get feelings {
+    return _feelings;
+  }
+
   void addGridItem(String newGridItemImage, String newGridItemLabel) {
-    print(newGridItemLabel);
     final item = GridItem(image: newGridItemImage, label: newGridItemLabel);
     _gridItems.add(item);
     notifyListeners();

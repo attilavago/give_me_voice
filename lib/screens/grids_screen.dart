@@ -159,7 +159,8 @@ class _GridsScreenState extends State<GridsScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(18.0)),
                                           onPressed: () {
-                                            gridData.setActiveCardIndex(index);
+                                            gridData
+                                                .setActiveCardIndex(grid['id']);
                                             Navigator.pushNamed(
                                                 context, GridScreen.id);
                                           },

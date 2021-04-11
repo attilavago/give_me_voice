@@ -70,4 +70,10 @@ class MyGridsDataBaseConnector {
     return await db
         .delete(tableMyGrids, where: '$columnId = ?', whereArgs: [id]);
   }
+
+  Future<List> getIndividualGrid(int id) async {
+    var db = await (this.database);
+    return await db
+        .query(tableMyGrids, where: '$columnId = ?', whereArgs: [id]);
+  }
 }
