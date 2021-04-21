@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:give_me_voice/components/round_button.dart';
 import 'package:give_me_voice/components/round_button_label.dart';
 import 'package:give_me_voice/utils/db_connector.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class AddGrid extends StatefulWidget {
   @override
@@ -20,6 +21,14 @@ class _AddGridState extends State<AddGrid> {
   final nameInput = TextEditingController();
   List labels = [];
   List images = [];
+
+  static FlutterTts flutterTts = FlutterTts();
+  Future playGridItem(String itemLabel) async {
+    var result = await flutterTts.speak(itemLabel);
+    if (result == 1) {
+      print(itemLabel);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +70,9 @@ class _AddGridState extends State<AddGrid> {
                     size: 35.0,
                     padding: 5.0,
                     buttonAction: () {
+                      playGridItem(item);
+                    },
+                    buttonLongAction: () {
                       gridData.addGridItem(item, item);
                       labels.add(item);
                       images.add(item);
@@ -68,26 +80,33 @@ class _AddGridState extends State<AddGrid> {
                   );
                 }),
           )),
-          Expanded(
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: Text('Your Grid'),
+            ),
+          ),
+          Container(
+              height: 60,
               child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: GridView.builder(
-                itemCount: gridData.gridItems.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 6),
-                itemBuilder: (context, index) {
-                  final item = gridData.gridItems[index];
-                  return RoundButton(
-                    imageName: item.image,
-                    size: 35.0,
-                    padding: 5.0,
-                    buttonAction: () {},
-                    buttonLongAction: () {
-                      gridData.removeGridItem(item);
-                    },
-                  );
-                }),
-          )),
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
+                child: GridView.builder(
+                    itemCount: gridData.gridItems.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 6),
+                    itemBuilder: (context, index) {
+                      final item = gridData.gridItems[index];
+                      return RoundButton(
+                        imageName: item.image,
+                        size: 35.0,
+                        padding: 5.0,
+                        buttonAction: () {},
+                        buttonLongAction: () {
+                          gridData.removeGridItem(item);
+                        },
+                      );
+                    }),
+              )),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
