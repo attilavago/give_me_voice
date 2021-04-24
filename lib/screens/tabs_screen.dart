@@ -20,12 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {},
-            ),
-          ],
+          automaticallyImplyLeading: false,
           bottom: TabBar(
             tabs: [
               Tab(
