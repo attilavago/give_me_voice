@@ -6,10 +6,18 @@ import 'package:give_me_voice/components/round_button.dart';
 import 'package:give_me_voice/components/round_button_label.dart';
 import 'package:give_me_voice/utils/db_connector.dart';
 
-class GridScreen extends StatelessWidget {
+class GridScreen extends StatefulWidget {
   static String id = 'grid_screen';
+
+  @override
+  _GridScreenState createState() => _GridScreenState();
+}
+
+class _GridScreenState extends State<GridScreen> {
   final MyGridsDataBaseConnector _myGridsDataBaseConnector =
       MyGridsDataBaseConnector();
+
+  bool isDisabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +36,17 @@ class GridScreen extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 title: Text(grid['name'].toString().capitalize()),
+                automaticallyImplyLeading: isDisabled,
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.wheelchair_pickup_rounded),
+                    onPressed: () {
+                      setState(() {
+                        isDisabled = false;
+                      });
+                    },
+                  ),
+                ],
               ),
               body: Padding(
                 padding: const EdgeInsets.all(50.0),

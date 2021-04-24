@@ -197,7 +197,7 @@ class _GridsScreenState extends State<GridsScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('blaaaaah', textAlign: TextAlign.center),
+                  Text('Loading grids...', textAlign: TextAlign.center),
                 ],
               ),
             );
