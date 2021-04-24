@@ -28,155 +28,158 @@ class _GridScreenState extends State<GridScreen> {
     _myGridsDataBaseConnector.initializeDatabase().then((value) {
       print('----database initialized from grid view-----');
     });
-    return Consumer<GridItemData>(builder: (context, gridData, child) {
-      return FutureBuilder<List>(
-        future: _myGridsDataBaseConnector
-            .getIndividualGrid(gridData.activeCardIndex),
-        builder: (context, AsyncSnapshot<List> snapshot) {
-          if (snapshot.hasData) {
-            var grid = snapshot.data[0];
-            var gridLabels = grid['labels'].toString().split(',');
-            var gridLength = gridLabels.length;
-            return Scaffold(
-              appBar: AppBar(
-                title: Text(grid['name'].toString().capitalize()),
-                automaticallyImplyLeading: !isDisabled,
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.wheelchair_pickup_rounded),
-                    onPressed: () {
-                      setState(() {
-                        isDisabled = true;
-                        topLeftPressed = false;
-                        topRightPressed = false;
-                        bottomLeftPressed = false;
-                        bottomRightPressed = false;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              body: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            color: Color(0xFFF4F9FC),
-                            onPressed: () {
-                              setState(() {
-                                topLeftPressed = true;
-                                if (isDisabled &&
-                                    topLeftPressed &&
-                                    topRightPressed &&
-                                    bottomLeftPressed &&
-                                    bottomRightPressed) {
-                                  isDisabled = false;
-                                }
-                              });
-                            }),
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            color: Color(0xFFF4F9FC),
-                            onPressed: () {
-                              setState(() {
-                                bottomLeftPressed = true;
-                                if (isDisabled &&
-                                    topLeftPressed &&
-                                    topRightPressed &&
-                                    bottomLeftPressed &&
-                                    bottomRightPressed) {
-                                  isDisabled = false;
-                                }
-                              });
-                            })
-                      ],
+    return WillPopScope(
+      onWillPop: isDisabled ? () async => false : null,
+      child: Consumer<GridItemData>(builder: (context, gridData, child) {
+        return FutureBuilder<List>(
+          future: _myGridsDataBaseConnector
+              .getIndividualGrid(gridData.activeCardIndex),
+          builder: (context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              var grid = snapshot.data[0];
+              var gridLabels = grid['labels'].toString().split(',');
+              var gridLength = gridLabels.length;
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text(grid['name'].toString().capitalize()),
+                  automaticallyImplyLeading: !isDisabled,
+                  actions: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.wheelchair_pickup_rounded),
+                      onPressed: () {
+                        setState(() {
+                          isDisabled = true;
+                          topLeftPressed = false;
+                          topRightPressed = false;
+                          bottomLeftPressed = false;
+                          bottomRightPressed = false;
+                        });
+                      },
                     ),
-                  ),
-                  Expanded(
-                    flex: 6,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 50, bottom: 50),
+                  ],
+                ),
+                body: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            child: GridView.builder(
-                                itemCount: gridLength,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        mainAxisSpacing: 30.0),
-                                itemBuilder: (context, index) {
-                                  final item = gridLabels[index];
-                                  return Column(
-                                    children: [
-                                      RoundButton(
-                                        imageName: item,
-                                        size: 70.0,
-                                        padding: 15.0,
-                                        buttonAction: () async {
-                                          await gridData.playGridItem(item);
-                                        },
-                                        buttonLongAction: () {},
-                                      ),
-                                      RoundButtonLabel(
-                                        label: item.capitalize(),
-                                      )
-                                    ],
-                                  );
-                                }),
-                          ),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  topLeftPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              }),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  bottomLeftPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              })
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            color: Color(0xFFF4F9FC),
-                            onPressed: () {
-                              setState(() {
-                                topRightPressed = true;
-                                if (isDisabled &&
-                                    topLeftPressed &&
-                                    topRightPressed &&
-                                    bottomLeftPressed &&
-                                    bottomRightPressed) {
-                                  isDisabled = false;
-                                }
-                              });
-                            }),
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            color: Color(0xFFF4F9FC),
-                            onPressed: () {
-                              setState(() {
-                                bottomRightPressed = true;
-                                if (isDisabled &&
-                                    topLeftPressed &&
-                                    topRightPressed &&
-                                    bottomLeftPressed &&
-                                    bottomRightPressed) {
-                                  isDisabled = false;
-                                }
-                              });
-                            })
-                      ],
+                    Expanded(
+                      flex: 6,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 50, bottom: 50),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GridView.builder(
+                                  itemCount: gridLength,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 30.0),
+                                  itemBuilder: (context, index) {
+                                    final item = gridLabels[index];
+                                    return Column(
+                                      children: [
+                                        RoundButton(
+                                          imageName: item,
+                                          size: 70.0,
+                                          padding: 15.0,
+                                          buttonAction: () async {
+                                            await gridData.playGridItem(item);
+                                          },
+                                          buttonLongAction: () {},
+                                        ),
+                                        RoundButtonLabel(
+                                          label: item.capitalize(),
+                                        )
+                                      ],
+                                    );
+                                  }),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
-      );
-    });
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  topRightPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              }),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  bottomRightPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              })
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+          },
+        );
+      }),
+    );
   }
 }
