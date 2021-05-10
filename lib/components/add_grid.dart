@@ -21,6 +21,7 @@ class _AddGridState extends State<AddGrid> {
   final nameInput = TextEditingController();
   List labels = [];
   List images = [];
+  String inlineError = '';
 
   static FlutterTts flutterTts = FlutterTts();
   Future playGridItem(String itemLabel) async {
@@ -65,29 +66,37 @@ class _AddGridState extends State<AddGrid> {
                     crossAxisCount: 6),
                 itemBuilder: (context, index) {
                   final item = gridData.feelings[index];
-                  return RoundButton(
-                    imageName: item,
-                    size: 35.0,
-                    padding: 5.0,
-                    buttonAction: () {
-                      playGridItem(item);
-                    },
-                    buttonLongAction: () {
-                      gridData.addGridItem(item, item);
-                      labels.add(item);
-                      images.add(item);
-                    },
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: RoundButton(
+                      imageName: item,
+                      size: 35.0,
+                      padding: 5.0,
+                      buttonAction: () {
+                        playGridItem(item);
+                      },
+                      buttonLongAction: () {
+                        gridData.addGridItem(item, item);
+                        labels.add(item);
+                        images.add(item);
+                      },
+                    ),
                   );
                 }),
           )),
           Container(
             child: Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Text('Your Grid'),
+              child: inlineError == ''
+                  ? Text('Your Grid')
+                  : Text(
+                      inlineError,
+                      style: TextStyle(color: Colors.red),
+                    ),
             ),
           ),
           Container(
-              height: 60,
+              height: 65,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: GridView.builder(
@@ -96,14 +105,17 @@ class _AddGridState extends State<AddGrid> {
                         crossAxisCount: 6),
                     itemBuilder: (context, index) {
                       final item = gridData.gridItems[index];
-                      return RoundButton(
-                        imageName: item.image,
-                        size: 35.0,
-                        padding: 5.0,
-                        buttonAction: () {},
-                        buttonLongAction: () {
-                          gridData.removeGridItem(item);
-                        },
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: RoundButton(
+                          imageName: item.image,
+                          size: 35.0,
+                          padding: 5.0,
+                          buttonAction: () {},
+                          buttonLongAction: () {
+                            gridData.removeGridItem(item);
+                          },
+                        ),
                       );
                     }),
               )),
@@ -116,6 +128,9 @@ class _AddGridState extends State<AddGrid> {
                   child: TextField(
                     controller: nameInput,
                     onChanged: (value) {
+                      setState(() {
+                        inlineError = '';
+                      });
                       gridTitle = value;
                     },
                     decoration: InputDecoration(
@@ -126,16 +141,23 @@ class _AddGridState extends State<AddGrid> {
                           icon: Icon(Icons.save),
                           iconSize: 30.0,
                           onPressed: () {
-                            gridData.addGridList(gridTitle);
-                            _myGridsDataBaseConnector.insertGridItem(
-                                nameInput.text,
-                                labels.join(','),
-                                images.join(','));
-                            _myGridsDataBaseConnector.getGrids();
-                            setState(() {
-                              nameInput.clear();
-                            });
-                            Navigator.pop(context);
+                            if (nameInput.text.length == 0) {
+                              setState(() {
+                                inlineError =
+                                    'You must name your grid before saving!';
+                              });
+                            } else {
+                              gridData.addGridList(gridTitle);
+                              _myGridsDataBaseConnector.insertGridItem(
+                                  nameInput.text,
+                                  labels.join(','),
+                                  images.join(','));
+                              _myGridsDataBaseConnector.getGrids();
+                              setState(() {
+                                nameInput.clear();
+                              });
+                              Navigator.pop(context);
+                            }
                           }),
                       border: OutlineInputBorder(),
                       labelText: 'Name your grid',
