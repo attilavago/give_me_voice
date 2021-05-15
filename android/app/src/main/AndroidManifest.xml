@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="give_me_voice"
+        android:label="Give Me Voice"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
