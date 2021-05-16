@@ -25,9 +25,7 @@ class _GridScreenState extends State<GridScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _myGridsDataBaseConnector.initializeDatabase().then((value) {
-      print('----database initialized from grid view-----');
-    });
+    _myGridsDataBaseConnector.initializeDatabase().then((value) {});
     return WillPopScope(
       onWillPop: isDisabled ? () async => false : null,
       child: Consumer<GridItemData>(builder: (context, gridData, child) {

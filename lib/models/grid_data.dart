@@ -131,8 +131,6 @@ class GridItemData extends ChangeNotifier {
 
   Future playGridItem(String itemLabel) async {
     var result = await flutterTts.speak(itemLabel);
-    if (result == 1) {
-      print(itemLabel);
-    }
+    if (result == 1) {}
   }
 }

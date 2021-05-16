@@ -16,9 +16,7 @@ class _GridsScreenState extends State<GridsScreen> {
       MyGridsDataBaseConnector();
   @override
   Widget build(BuildContext context) {
-    _myGridsDataBaseConnector.initializeDatabase().then((value) {
-      print('----database initialized from grids list-----');
-    });
+    _myGridsDataBaseConnector.initializeDatabase().then((value) {});
     Future<void> _showMyDialog(gridId, gridName, context) async {
       return showDialog<void>(
         context: context,

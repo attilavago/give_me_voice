@@ -26,16 +26,12 @@ class _AddGridState extends State<AddGrid> {
   static FlutterTts flutterTts = FlutterTts();
   Future playGridItem(String itemLabel) async {
     var result = await flutterTts.speak(itemLabel);
-    if (result == 1) {
-      print(itemLabel);
-    }
+    if (result == 1) {}
   }
 
   @override
   Widget build(BuildContext context) {
-    _myGridsDataBaseConnector.initializeDatabase().then((value) {
-      print('----database initialized-----');
-    });
+    _myGridsDataBaseConnector.initializeDatabase().then((value) {});
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Column(
         children: <Widget>[
