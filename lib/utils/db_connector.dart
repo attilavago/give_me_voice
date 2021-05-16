@@ -28,7 +28,6 @@ class MyGridsDataBaseConnector {
 
   Future<Database> initializeDatabase() async {
     var dir = await getDatabasesPath();
-    print(dir);
     var path = dir + 'mygrids.db';
 
     var database = openDatabase(
@@ -52,7 +51,6 @@ class MyGridsDataBaseConnector {
     var db = await this.database;
     var result = await db.insert(
         tableMyGrids, {"name": name, "labels": labels, "images": images});
-    print('result is $result');
   }
 
   Future<List> getGrids() async {
