@@ -39,10 +39,9 @@ class _TabsScreenState extends State<TabsScreen> {
             GridsScreen(),
           ],
         ),
-        floatingActionButton: FloatingActionButton.extended(
+        floatingActionButton: FloatingActionButton(
             elevation: 1.0,
-            icon: Icon(Icons.add),
-            label: Text('NEW GRID'),
+            child: Icon(Icons.add),
             onPressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,

@@ -97,18 +97,22 @@ class _GridScreenState extends State<GridScreen> {
                       ),
                     ),
                     Expanded(
-                      flex: 6,
+                      flex: 8,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 50, bottom: 50),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Expanded(
+                              flex: 1,
                               child: GridView.builder(
                                   itemCount: gridLength,
+                                  physics: new NeverScrollableScrollPhysics(),
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
-                                          mainAxisSpacing: 30.0),
+                                          mainAxisSpacing: 25.0),
                                   itemBuilder: (context, index) {
                                     final item = gridLabels[index];
                                     return Column(
