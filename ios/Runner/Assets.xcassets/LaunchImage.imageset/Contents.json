@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "givemevoice_logo.png",
+      "filename" : "give-me-voice-official-logo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "givemevoice_logo@2x.png",
+      "filename" : "give-me-voice-official-logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "givemevoice_logo@3x.png",
+      "filename" : "give-me-voice-official-logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
