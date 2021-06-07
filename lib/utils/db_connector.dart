@@ -28,7 +28,7 @@ class MyGridsDataBaseConnector {
 
   Future<Database> initializeDatabase() async {
     var dir = await getDatabasesPath();
-    var path = dir + 'mygrids.db';
+    var path = dir + '/mygrids.db';
 
     var database = openDatabase(
       path,
