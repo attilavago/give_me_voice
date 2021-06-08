@@ -14,6 +14,7 @@ class ChoicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Column(
@@ -22,6 +23,7 @@ class ChoicesScreen extends StatelessWidget {
         children: <Widget>[
           RoundButton(
             imageName: 'yes',
+            size: screenSize.width < 768 ? 50 : 100,
             buttonAction: () {
               playGridItem('Yes');
             },
@@ -30,10 +32,11 @@ class ChoicesScreen extends StatelessWidget {
             label: 'Yes',
           ),
           SizedBox(
-            height: 100.0,
+            height: screenSize.width < 768 ? 50 : 150,
           ),
           RoundButton(
             imageName: 'no',
+            size: screenSize.width < 768 ? 50 : 100,
             buttonAction: () {
               playGridItem('No');
             },

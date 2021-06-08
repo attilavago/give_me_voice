@@ -16,6 +16,7 @@ class FeelingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Column(
@@ -29,6 +30,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'happy',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Happy');
                     },
@@ -42,6 +44,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'sad',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Sad');
                     },
@@ -53,7 +56,7 @@ class FeelingsScreen extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: screenSize.width < 768 ? 20 : 75),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -61,6 +64,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'thinking',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Thinking');
                     },
@@ -74,6 +78,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'unwell',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Unwell');
                     },
@@ -85,7 +90,7 @@ class FeelingsScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: screenSize.width < 768 ? 20 : 75),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -93,6 +98,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'frightened',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Frightened');
                     },
@@ -106,6 +112,7 @@ class FeelingsScreen extends StatelessWidget {
                 children: <Widget>[
                   RoundButton(
                     imageName: 'angry',
+                    size: screenSize.width < 768 ? 50 : 100,
                     buttonAction: () {
                       playGridItem('Angry');
                     },
