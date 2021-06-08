@@ -17,7 +17,7 @@ class ChoicesScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           RoundButton(
@@ -30,7 +30,7 @@ class ChoicesScreen extends StatelessWidget {
             label: 'Yes',
           ),
           SizedBox(
-            height: 30.0,
+            height: 100.0,
           ),
           RoundButton(
             imageName: 'no',

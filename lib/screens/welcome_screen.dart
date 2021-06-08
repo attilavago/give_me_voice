@@ -34,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                'lite',
+                'standard',
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
                   fontSize: 20.0,
@@ -44,7 +44,11 @@ class WelcomeScreen extends StatelessWidget {
                 height: 80.0,
               ),
               Text(
-                'Communicate without words, with a single touch. Give voice to those who do not have!',
+                'Communicate without words, with a single touch.',
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                'Give voice to those who do not have!',
                 textAlign: TextAlign.center,
               ),
               SizedBox(
@@ -64,7 +68,6 @@ class WelcomeScreen extends StatelessWidget {
               RoundButton(
                 imageName: 'iloveyou',
                 buttonAction: () {
-                  playGridItem('I love you');
                   Navigator.pushNamed(context, TabsScreen.id);
                 },
               ),
