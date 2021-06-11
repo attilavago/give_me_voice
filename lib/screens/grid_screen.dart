@@ -25,6 +25,7 @@ class _GridScreenState extends State<GridScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     _myGridsDataBaseConnector.initializeDatabase().then((value) {});
     return WillPopScope(
       onWillPop: isDisabled ? () async => false : null,
@@ -38,160 +39,151 @@ class _GridScreenState extends State<GridScreen> {
               var gridLabels = grid['labels'].toString().split(',');
               var gridLength = gridLabels.length;
               return Scaffold(
-                  appBar: AppBar(
-                    title: Text(grid['name'].toString().capitalize()),
-                    automaticallyImplyLeading: !isDisabled,
-                    actions: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.wheelchair_pickup_rounded),
-                        onPressed: () {
-                          setState(() {
-                            isDisabled = true;
-                            topLeftPressed = false;
-                            topRightPressed = false;
-                            bottomLeftPressed = false;
-                            bottomRightPressed = false;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  body: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                appBar: AppBar(
+                  title: Text(grid['name'].toString().capitalize()),
+                  automaticallyImplyLeading: !isDisabled,
+                  actions: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.wheelchair_pickup_rounded),
+                      onPressed: () {
+                        setState(() {
+                          isDisabled = true;
+                          topLeftPressed = false;
+                          topRightPressed = false;
+                          bottomLeftPressed = false;
+                          bottomRightPressed = false;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                body: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('test'),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  topLeftPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              }),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  bottomLeftPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              })
                         ],
                       ),
-                    ],
-                  )
-
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       flex: 1,
-                  //       child: Column(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         children: [
-                  //           IconButton(
-                  //               icon: Icon(Icons.circle),
-                  //               color: Color(0xFFF4F9FC),
-                  //               onPressed: () {
-                  //                 setState(() {
-                  //                   topLeftPressed = true;
-                  //                   if (isDisabled &&
-                  //                       topLeftPressed &&
-                  //                       topRightPressed &&
-                  //                       bottomLeftPressed &&
-                  //                       bottomRightPressed) {
-                  //                     isDisabled = false;
-                  //                   }
-                  //                 });
-                  //               }),
-                  //           IconButton(
-                  //               icon: Icon(Icons.circle),
-                  //               color: Color(0xFFF4F9FC),
-                  //               onPressed: () {
-                  //                 setState(() {
-                  //                   bottomLeftPressed = true;
-                  //                   if (isDisabled &&
-                  //                       topLeftPressed &&
-                  //                       topRightPressed &&
-                  //                       bottomLeftPressed &&
-                  //                       bottomRightPressed) {
-                  //                     isDisabled = false;
-                  //                   }
-                  //                 });
-                  //               })
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       flex: 8,
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.only(top: 20, bottom: 20),
-                  //         child: Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           crossAxisAlignment: CrossAxisAlignment.center,
-                  //           children: [
-                  //             Expanded(
-                  //               flex: 8,
-                  //               child: GridView.builder(
-                  //                   itemCount: gridLength,
-                  //                   physics: new NeverScrollableScrollPhysics(),
-                  //                   gridDelegate:
-                  //                       SliverGridDelegateWithFixedCrossAxisCount(
-                  //                           crossAxisCount: 2,
-                  //                           mainAxisSpacing: 25.0),
-                  //                   itemBuilder: (context, index) {
-                  //                     final item = gridLabels[index];
-                  //                     return Column(
-                  //                       children: [
-                  //                         RoundButton(
-                  //                           imageName: item,
-                  //                           size: 70.0,
-                  //                           padding: 15.0,
-                  //                           buttonAction: () async {
-                  //                             await gridData.playGridItem(item);
-                  //                           },
-                  //                           buttonLongAction: () {},
-                  //                         ),
-                  //                         RoundButtonLabel(
-                  //                           label: item.capitalize(),
-                  //                         )
-                  //                       ],
-                  //                     );
-                  //                   }),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       flex: 1,
-                  //       child: Column(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         children: [
-                  //           IconButton(
-                  //               icon: Icon(Icons.circle),
-                  //               color: Color(0xFFF4F9FC),
-                  //               onPressed: () {
-                  //                 setState(() {
-                  //                   topRightPressed = true;
-                  //                   if (isDisabled &&
-                  //                       topLeftPressed &&
-                  //                       topRightPressed &&
-                  //                       bottomLeftPressed &&
-                  //                       bottomRightPressed) {
-                  //                     isDisabled = false;
-                  //                   }
-                  //                 });
-                  //               }),
-                  //           IconButton(
-                  //               icon: Icon(Icons.circle),
-                  //               color: Color(0xFFF4F9FC),
-                  //               onPressed: () {
-                  //                 setState(() {
-                  //                   bottomRightPressed = true;
-                  //                   if (isDisabled &&
-                  //                       topLeftPressed &&
-                  //                       topRightPressed &&
-                  //                       bottomLeftPressed &&
-                  //                       bottomRightPressed) {
-                  //                     isDisabled = false;
-                  //                   }
-                  //                 });
-                  //               })
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  );
+                    ),
+                    Expanded(
+                      flex: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 8,
+                              child: GridView.builder(
+                                  itemCount: gridLength,
+                                  physics: new NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 25.0),
+                                  itemBuilder: (context, index) {
+                                    final item = gridLabels[index];
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        RoundButton(
+                                          imageName: item,
+                                          size:
+                                              screenSize.width < 768 ? 50 : 100,
+                                          padding: 15.0,
+                                          buttonAction: () async {
+                                            await gridData.playGridItem(item);
+                                          },
+                                          buttonLongAction: () {},
+                                        ),
+                                        RoundButtonLabel(
+                                          label: item.capitalize(),
+                                        )
+                                      ],
+                                    );
+                                  }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  topRightPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              }),
+                          IconButton(
+                              icon: Icon(Icons.circle),
+                              color: Color(0xFFF4F9FC),
+                              onPressed: () {
+                                setState(() {
+                                  bottomRightPressed = true;
+                                  if (isDisabled &&
+                                      topLeftPressed &&
+                                      topRightPressed &&
+                                      bottomLeftPressed &&
+                                      bottomRightPressed) {
+                                    isDisabled = false;
+                                  }
+                                });
+                              })
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
             }
           },
         );
