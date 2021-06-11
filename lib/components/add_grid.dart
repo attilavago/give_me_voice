@@ -31,6 +31,7 @@ class _AddGridState extends State<AddGrid> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     _myGridsDataBaseConnector.initializeDatabase().then((value) {});
     return Consumer<GridItemData>(builder: (context, gridData, child) {
       return Column(
@@ -59,7 +60,7 @@ class _AddGridState extends State<AddGrid> {
             child: GridView.builder(
                 itemCount: gridData.feelings.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 6),
+                    crossAxisCount: screenSize.width < 768 ? 6 : 12),
                 itemBuilder: (context, index) {
                   final item = gridData.feelings[index];
                   return Padding(
@@ -98,7 +99,7 @@ class _AddGridState extends State<AddGrid> {
                 child: GridView.builder(
                     itemCount: gridData.gridItems.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 6),
+                        crossAxisCount: screenSize.width < 768 ? 6 : 12),
                     itemBuilder: (context, index) {
                       final item = gridData.gridItems[index];
                       return Padding(
