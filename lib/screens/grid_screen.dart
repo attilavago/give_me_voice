@@ -107,37 +107,173 @@ class _GridScreenState extends State<GridScreen> {
                           children: [
                             Expanded(
                               flex: 8,
-                              child: GridView.builder(
-                                  itemCount: gridLength,
-                                  physics: new NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          mainAxisSpacing: 25.0),
-                                  itemBuilder: (context, index) {
-                                    final item = gridLabels[index];
-                                    return Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        RoundButton(
-                                          imageName: item,
-                                          size:
-                                              screenSize.width < 768 ? 50 : 100,
-                                          padding: 15.0,
-                                          buttonAction: () async {
-                                            await gridData.playGridItem(item);
-                                          },
-                                          buttonLongAction: () {},
-                                        ),
-                                        RoundButtonLabel(
-                                          label: item.capitalize(),
-                                        )
-                                      ],
-                                    );
-                                  }),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[0],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[0]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[0],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[1],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[1]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[1],
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: screenSize.width < 768 ? 20 : 75),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[2],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[2]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[2],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[3],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[3]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[3],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: screenSize.width < 768 ? 20 : 75),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[4],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[4]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[4],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: <Widget>[
+                                          RoundButton(
+                                            imageName: gridLabels[5],
+                                            size: screenSize.width < 768
+                                                ? 50
+                                                : 100,
+                                            buttonAction: () {
+                                              gridData
+                                                  .playGridItem(gridLabels[5]);
+                                            },
+                                          ),
+                                          RoundButtonLabel(
+                                            label: gridLabels[5],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                              // GridView.builder(
+                              //     itemCount: gridLength,
+                              //     physics: new NeverScrollableScrollPhysics(),
+                              //     gridDelegate:
+                              //         SliverGridDelegateWithFixedCrossAxisCount(
+                              //       crossAxisCount: 2,
+                              //     ),
+                              //     itemBuilder: (context, index) {
+                              //       final item = gridLabels[index];
+                              //       return Container(
+                              //         color: Colors.green,
+                              //         child: Column(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.center,
+                              //           crossAxisAlignment:
+                              //               CrossAxisAlignment.center,
+                              //           children: [
+                              //             RoundButton(
+                              //               imageName: item,
+                              //               size: screenSize.width < 768
+                              //                   ? 50
+                              //                   : 100,
+                              //               padding: 15.0,
+                              //               buttonAction: () async {
+                              //                 await gridData
+                              //                     .playGridItem(item);
+                              //               },
+                              //               buttonLongAction: () {},
+                              //             ),
+                              //             RoundButtonLabel(
+                              //               label: item.capitalize(),
+                              //             )
+                              //           ],
+                              //         ),
+                              //       );
+                              //     }),
                             ),
                           ],
                         ),
