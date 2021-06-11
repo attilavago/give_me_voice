@@ -237,43 +237,6 @@ class _GridScreenState extends State<GridScreen> {
                                   ),
                                 ],
                               ),
-
-                              // GridView.builder(
-                              //     itemCount: gridLength,
-                              //     physics: new NeverScrollableScrollPhysics(),
-                              //     gridDelegate:
-                              //         SliverGridDelegateWithFixedCrossAxisCount(
-                              //       crossAxisCount: 2,
-                              //     ),
-                              //     itemBuilder: (context, index) {
-                              //       final item = gridLabels[index];
-                              //       return Container(
-                              //         color: Colors.green,
-                              //         child: Column(
-                              //           mainAxisAlignment:
-                              //               MainAxisAlignment.center,
-                              //           crossAxisAlignment:
-                              //               CrossAxisAlignment.center,
-                              //           children: [
-                              //             RoundButton(
-                              //               imageName: item,
-                              //               size: screenSize.width < 768
-                              //                   ? 50
-                              //                   : 100,
-                              //               padding: 15.0,
-                              //               buttonAction: () async {
-                              //                 await gridData
-                              //                     .playGridItem(item);
-                              //               },
-                              //               buttonLongAction: () {},
-                              //             ),
-                              //             RoundButtonLabel(
-                              //               label: item.capitalize(),
-                              //             )
-                              //           ],
-                              //         ),
-                              //       );
-                              //     }),
                             ),
                           ],
                         ),
