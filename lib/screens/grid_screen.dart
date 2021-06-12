@@ -37,23 +37,28 @@ class _GridScreenState extends State<GridScreen> {
             if (snapshot.hasData) {
               var grid = snapshot.data[0];
               var gridLabels = grid['labels'].toString().split(',');
-              var gridLength = gridLabels.length;
               return Scaffold(
                 appBar: AppBar(
                   title: Text(grid['name'].toString().capitalize()),
                   automaticallyImplyLeading: !isDisabled,
                   actions: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.wheelchair_pickup_rounded),
-                      onPressed: () {
-                        setState(() {
-                          isDisabled = true;
-                          topLeftPressed = false;
-                          topRightPressed = false;
-                          bottomLeftPressed = false;
-                          bottomRightPressed = false;
-                        });
-                      },
+                    Semantics(
+                      label: isDisabled
+                          ? 'grid screen locked'
+                          : 'lock grid screen',
+                      enabled: isDisabled ? false : true,
+                      child: IconButton(
+                        icon: Icon(isDisabled ? Icons.lock : Icons.lock_open),
+                        onPressed: () {
+                          setState(() {
+                            isDisabled = true;
+                            topLeftPressed = false;
+                            topRightPressed = false;
+                            bottomLeftPressed = false;
+                            bottomRightPressed = false;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),

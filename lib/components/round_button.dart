@@ -15,19 +15,25 @@ class RoundButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: buttonAction,
-      onLongPress: buttonLongAction,
-      elevation: 1.0,
-      fillColor: Colors.white,
-      splashColor: Color(0xFFCADAE0),
-      child: Image.asset(
-        'images/$imageName.png',
-        height: size,
-      ),
-      padding: EdgeInsets.all(padding),
-      shape: CircleBorder(
-        side: BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+    return Semantics(
+      label: imageName,
+      child: RawMaterialButton(
+        onPressed: buttonAction,
+        onLongPress: buttonLongAction,
+        elevation: 1.0,
+        fillColor: Colors.white,
+        splashColor: Color(0xFFCADAE0),
+        child: ExcludeSemantics(
+          excluding: true,
+          child: Image.asset(
+            'images/$imageName.png',
+            height: size,
+          ),
+        ),
+        padding: EdgeInsets.all(padding),
+        shape: CircleBorder(
+          side: BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+        ),
       ),
     );
   }
