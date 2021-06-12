@@ -136,28 +136,31 @@ class _AddGridState extends State<AddGrid> {
                       isDense: true,
                       contentPadding:
                           EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.save),
-                          iconSize: 30.0,
-                          onPressed: () {
-                            if (nameInput.text.length == 0) {
-                              setState(() {
-                                inlineError =
-                                    'You must name your grid before saving!';
-                              });
-                            } else {
-                              gridData.addGridList(gridTitle);
-                              _myGridsDataBaseConnector.insertGridItem(
-                                  nameInput.text,
-                                  labels.join(','),
-                                  images.join(','));
-                              _myGridsDataBaseConnector.getGrids();
-                              setState(() {
-                                nameInput.clear();
-                              });
-                              Navigator.pop(context);
-                            }
-                          }),
+                      suffixIcon: Semantics(
+                        label: 'save custom grid',
+                        child: IconButton(
+                            icon: Icon(Icons.save),
+                            iconSize: 30.0,
+                            onPressed: () {
+                              if (nameInput.text.length == 0) {
+                                setState(() {
+                                  inlineError =
+                                      'You must name your grid before saving!';
+                                });
+                              } else {
+                                gridData.addGridList(gridTitle);
+                                _myGridsDataBaseConnector.insertGridItem(
+                                    nameInput.text,
+                                    labels.join(','),
+                                    images.join(','));
+                                _myGridsDataBaseConnector.getGrids();
+                                setState(() {
+                                  nameInput.clear();
+                                });
+                                Navigator.pop(context);
+                              }
+                            }),
+                      ),
                       border: OutlineInputBorder(),
                       labelText: 'Name your grid',
                     ),
