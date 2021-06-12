@@ -129,15 +129,20 @@ class _GridsScreenState extends State<GridsScreen> {
                                                 .textTheme
                                                 .headline6,
                                           ),
-                                          IconButton(
-                                            onPressed: () {
-                                              _showMyDialog(grid['id'],
-                                                      grid['name'], context)
-                                                  .then((_) => setState(() {}));
-                                            },
-                                            icon: Icon(Icons.delete),
-                                            color:
-                                                Theme.of(context).accentColor,
+                                          Semantics(
+                                            label:
+                                                'delete ${grid['name']} grid',
+                                            child: IconButton(
+                                              onPressed: () {
+                                                _showMyDialog(grid['id'],
+                                                        grid['name'], context)
+                                                    .then(
+                                                        (_) => setState(() {}));
+                                              },
+                                              icon: Icon(Icons.delete),
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                            ),
                                           ),
                                         ],
                                       ),

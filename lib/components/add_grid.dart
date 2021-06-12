@@ -73,7 +73,9 @@ class _AddGridState extends State<AddGrid> {
                         playGridItem(item);
                       },
                       buttonLongAction: () {
-                        gridData.addGridItem(item, item);
+                        if (gridData.gridItems.length < 6) {
+                          gridData.addGridItem(item, item);
+                        }
                         labels.add(item);
                         images.add(item);
                       },
@@ -131,7 +133,7 @@ class _AddGridState extends State<AddGrid> {
                       gridTitle = value;
                     },
                     decoration: InputDecoration(
-                      isDense: true, // Added this
+                      isDense: true,
                       contentPadding:
                           EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
                       suffixIcon: IconButton(
