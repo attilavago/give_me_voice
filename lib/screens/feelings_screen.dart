@@ -26,33 +26,39 @@ class FeelingsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'happy',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Happy');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Happy',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'happy',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Happy');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Happy',
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'sad',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Sad');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Sad',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'sad',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Sad');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Sad',
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -60,33 +66,39 @@ class FeelingsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'thinking',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Thinking');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Thinking',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'thinking',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Thinking');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Thinking',
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'unwell',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Unwell');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Unwell',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'unwell',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Unwell');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Unwell',
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -94,33 +106,39 @@ class FeelingsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'frightened',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Frightened');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Frightened',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'frightened',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Frightened');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Frightened',
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  RoundButton(
-                    imageName: 'angry',
-                    size: screenSize.width < 768 ? 50 : 100,
-                    buttonAction: () {
-                      playGridItem('Angry');
-                    },
-                  ),
-                  RoundButtonLabel(
-                    label: 'Angry',
-                  ),
-                ],
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    RoundButton(
+                      imageName: 'angry',
+                      size: screenSize.width < 768 ? 50 : 100,
+                      buttonAction: () {
+                        playGridItem('Angry');
+                      },
+                    ),
+                    RoundButtonLabel(
+                      label: 'Angry',
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

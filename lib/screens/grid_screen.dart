@@ -69,36 +69,42 @@ class _GridScreenState extends State<GridScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              icon: Icon(Icons.circle),
-                              color: Color(0xFFF4F9FC),
-                              onPressed: () {
-                                setState(() {
-                                  topLeftPressed = true;
-                                  if (isDisabled &&
-                                      topLeftPressed &&
-                                      topRightPressed &&
-                                      bottomLeftPressed &&
-                                      bottomRightPressed) {
-                                    isDisabled = false;
-                                  }
-                                });
-                              }),
-                          IconButton(
-                              icon: Icon(Icons.circle),
-                              color: Color(0xFFF4F9FC),
-                              onPressed: () {
-                                setState(() {
-                                  bottomLeftPressed = true;
-                                  if (isDisabled &&
-                                      topLeftPressed &&
-                                      topRightPressed &&
-                                      bottomLeftPressed &&
-                                      bottomRightPressed) {
-                                    isDisabled = false;
-                                  }
-                                });
-                              })
+                          Semantics(
+                            label: 'unlock custom grid button 1',
+                            child: IconButton(
+                                icon: Icon(Icons.circle),
+                                color: Color(0xFFF4F9FC),
+                                onPressed: () {
+                                  setState(() {
+                                    topLeftPressed = true;
+                                    if (isDisabled &&
+                                        topLeftPressed &&
+                                        topRightPressed &&
+                                        bottomLeftPressed &&
+                                        bottomRightPressed) {
+                                      isDisabled = false;
+                                    }
+                                  });
+                                }),
+                          ),
+                          Semantics(
+                            label: 'unlock custom grid button 3',
+                            child: IconButton(
+                                icon: Icon(Icons.circle),
+                                color: Color(0xFFF4F9FC),
+                                onPressed: () {
+                                  setState(() {
+                                    bottomLeftPressed = true;
+                                    if (isDisabled &&
+                                        topLeftPressed &&
+                                        topRightPressed &&
+                                        bottomLeftPressed &&
+                                        bottomRightPressed) {
+                                      isDisabled = false;
+                                    }
+                                  });
+                                }),
+                          )
                         ],
                       ),
                     ),
@@ -120,39 +126,45 @@ class _GridScreenState extends State<GridScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[0],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[0]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[0],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[0],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[0]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[0],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[1],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[1]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[1],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[1],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[1]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[1],
+                                            ),
+                                          ],
+                                        ),
                                       )
                                     ],
                                   ),
@@ -162,39 +174,45 @@ class _GridScreenState extends State<GridScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[2],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[2]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[2],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[2],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[2]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[2],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[3],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[3]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[3],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[3],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[3]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[3],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -204,39 +222,45 @@ class _GridScreenState extends State<GridScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[4],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[4]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[4],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[4],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[4]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[4],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      Column(
-                                        children: <Widget>[
-                                          RoundButton(
-                                            imageName: gridLabels[5],
-                                            size: screenSize.width < 768
-                                                ? 50
-                                                : 100,
-                                            buttonAction: () {
-                                              gridData
-                                                  .playGridItem(gridLabels[5]);
-                                            },
-                                          ),
-                                          RoundButtonLabel(
-                                            label: gridLabels[5],
-                                          ),
-                                        ],
+                                      Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          children: <Widget>[
+                                            RoundButton(
+                                              imageName: gridLabels[5],
+                                              size: screenSize.width < 768
+                                                  ? 50
+                                                  : 100,
+                                              buttonAction: () {
+                                                gridData.playGridItem(
+                                                    gridLabels[5]);
+                                              },
+                                            ),
+                                            RoundButtonLabel(
+                                              label: gridLabels[5],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -252,36 +276,42 @@ class _GridScreenState extends State<GridScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              icon: Icon(Icons.circle),
-                              color: Color(0xFFF4F9FC),
-                              onPressed: () {
-                                setState(() {
-                                  topRightPressed = true;
-                                  if (isDisabled &&
-                                      topLeftPressed &&
-                                      topRightPressed &&
-                                      bottomLeftPressed &&
-                                      bottomRightPressed) {
-                                    isDisabled = false;
-                                  }
-                                });
-                              }),
-                          IconButton(
-                              icon: Icon(Icons.circle),
-                              color: Color(0xFFF4F9FC),
-                              onPressed: () {
-                                setState(() {
-                                  bottomRightPressed = true;
-                                  if (isDisabled &&
-                                      topLeftPressed &&
-                                      topRightPressed &&
-                                      bottomLeftPressed &&
-                                      bottomRightPressed) {
-                                    isDisabled = false;
-                                  }
-                                });
-                              })
+                          Semantics(
+                            label: 'unlock custom grid button 2',
+                            child: IconButton(
+                                icon: Icon(Icons.circle),
+                                color: Color(0xFFF4F9FC),
+                                onPressed: () {
+                                  setState(() {
+                                    topRightPressed = true;
+                                    if (isDisabled &&
+                                        topLeftPressed &&
+                                        topRightPressed &&
+                                        bottomLeftPressed &&
+                                        bottomRightPressed) {
+                                      isDisabled = false;
+                                    }
+                                  });
+                                }),
+                          ),
+                          Semantics(
+                            label: 'unlock custom grid button 4',
+                            child: IconButton(
+                                icon: Icon(Icons.circle),
+                                color: Color(0xFFF4F9FC),
+                                onPressed: () {
+                                  setState(() {
+                                    bottomRightPressed = true;
+                                    if (isDisabled &&
+                                        topLeftPressed &&
+                                        topRightPressed &&
+                                        bottomLeftPressed &&
+                                        bottomRightPressed) {
+                                      isDisabled = false;
+                                    }
+                                  });
+                                }),
+                          )
                         ],
                       ),
                     ),
