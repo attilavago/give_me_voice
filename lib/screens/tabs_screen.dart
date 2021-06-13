@@ -19,18 +19,56 @@ class _TabsScreenState extends State<TabsScreen> {
       length: 3,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                text: 'Choices',
-              ),
-              Tab(text: 'Feelings'),
-              Tab(text: 'My Grids'),
-            ],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: AppBar(
+            elevation: 0,
+            backgroundColor: Color(0xFFF4F9FC),
+            //automaticallyImplyLeading: false,
+            bottom: TabBar(
+              unselectedLabelColor: Color(0xFF2BAE66),
+              indicatorSize: TabBarIndicatorSize.label,
+              indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Color(0xFF2BAE66)),
+              tabs: [
+                Tab(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Color(0xFF2BAE66), width: 1)),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("Choices"),
+                    ),
+                  ),
+                ),
+                Tab(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Color(0xFF2BAE66), width: 1)),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("Feelings"),
+                    ),
+                  ),
+                ),
+                Tab(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Color(0xFF2BAE66), width: 1)),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("My Grids"),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            //title: Text('Give Me Voice'),
           ),
-          title: Text('Give Me Voice'),
         ),
         body: TabBarView(
           children: [
