@@ -4,6 +4,7 @@ import 'package:give_me_voice/models/grid_data.dart';
 import 'package:give_me_voice/screens/grid_screen.dart';
 import 'package:give_me_voice/utils/extensions.dart';
 import 'package:give_me_voice/utils/db_connector.dart';
+import 'package:give_me_voice/constants/colors.dart';
 
 class GridsScreen extends StatefulWidget {
   @override
@@ -113,84 +114,103 @@ class _GridsScreenState extends State<GridsScreen> {
                                 ),
                               ),
                               child: Card(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                elevation: 0,
+                                color: Color(0xFFF4F9FC),
+                                child: Container(
+                                  decoration: kFancyCardBackground,
+                                  child: InkWell(
+                                    onTap: () {
+                                      gridData.setActiveCardIndex(grid['id']);
+                                      Navigator.pushNamed(
+                                          context, GridScreen.id);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
                                         children: [
-                                          Text(
-                                            grid['name']
-                                                .toString()
-                                                .capitalize(),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline6,
-                                          ),
-                                          Semantics(
-                                            label:
-                                                'delete ${grid['name']} grid',
-                                            child: IconButton(
-                                              onPressed: () {
-                                                _showMyDialog(grid['id'],
-                                                        grid['name'], context)
-                                                    .then(
-                                                        (_) => setState(() {}));
-                                              },
-                                              icon: Icon(Icons.delete),
-                                              color:
-                                                  Theme.of(context).accentColor,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          for (var image in gridImages)
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  right: 3.0, bottom: 10.0),
-                                              child: Image.asset(
-                                                'images/${image}.png',
-                                                height: 30.0,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                grid['name']
+                                                    .toString()
+                                                    .capitalize(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline6,
                                               ),
-                                            )
+                                              Semantics(
+                                                label:
+                                                    'delete ${grid['name']} grid',
+                                                child: IconButton(
+                                                  onPressed: () {
+                                                    _showMyDialog(
+                                                            grid['id'],
+                                                            grid['name'],
+                                                            context)
+                                                        .then((_) =>
+                                                            setState(() {}));
+                                                  },
+                                                  icon: Icon(Icons.delete),
+                                                  color: Theme.of(context)
+                                                      .scaffoldBackgroundColor,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              for (var image in gridImages)
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 3.0,
+                                                          bottom: 10.0),
+                                                  child: Image.asset(
+                                                    'images/${image}.png',
+                                                    height: 30.0,
+                                                  ),
+                                                )
+                                            ],
+                                          ),
+                                          // Row(
+                                          //   children: [
+                                          //     OutlineButton(
+                                          //       shape: RoundedRectangleBorder(
+                                          //           borderRadius:
+                                          //               BorderRadius.circular(
+                                          //                   18.0)),
+                                          //       onPressed: () {
+                                          //         gridData.setActiveCardIndex(
+                                          //             grid['id']);
+                                          //         Navigator.pushNamed(
+                                          //             context, GridScreen.id);
+                                          //       },
+                                          //       child: Text(
+                                          //         'Open',
+                                          //         style:
+                                          //             TextStyle(fontSize: 17.0),
+                                          //       ),
+                                          //       color: Theme.of(context)
+                                          //           .scaffoldBackgroundColor,
+                                          //       highlightedBorderColor: Theme
+                                          //               .of(context)
+                                          //           .scaffoldBackgroundColor,
+                                          //       borderSide: BorderSide(
+                                          //           color: Theme.of(context)
+                                          //               .scaffoldBackgroundColor),
+                                          //       textColor: Theme.of(context)
+                                          //           .scaffoldBackgroundColor,
+                                          //       padding: EdgeInsets.symmetric(
+                                          //           vertical: 0,
+                                          //           horizontal: 1.0),
+                                          //     ),
+                                          //   ],
+                                          // )
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          OutlineButton(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        18.0)),
-                                            onPressed: () {
-                                              gridData.setActiveCardIndex(
-                                                  grid['id']);
-                                              Navigator.pushNamed(
-                                                  context, GridScreen.id);
-                                            },
-                                            child: Text(
-                                              'Open',
-                                              style: TextStyle(fontSize: 17.0),
-                                            ),
-                                            color:
-                                                Theme.of(context).accentColor,
-                                            highlightedBorderColor:
-                                                Theme.of(context).accentColor,
-                                            borderSide: BorderSide(
-                                                color: Theme.of(context)
-                                                    .accentColor),
-                                            textColor:
-                                                Theme.of(context).accentColor,
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 1.0),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
