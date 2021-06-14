@@ -25,31 +25,65 @@ class _GridsScreenState extends State<GridsScreen> {
         barrierDismissible: true,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Are you sure?'),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0))),
+            backgroundColor: Color(0xFFF4F9FC),
+            elevation: 0,
+            title: Text(
+              'Are you sure?',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Color(0xFF2BAE66)),
+            ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   Text(
                       'You are about to delete the "${gridName.toString().capitalize()}" grid!'),
-                  Text('Is this really what you want?'),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFF2BAE66)),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side:
+                                        BorderSide(color: Color(0xFF2BAE66))))),
+                        child: Text(
+                          'No, leave it.',
+                          style: TextStyle(color: Color(0xFFF4F9FC)),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFF2BAE66)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side:
+                                        BorderSide(color: Color(0xFF2BAE66))))),
+                        child: Text(
+                          'Yes, delete.',
+                          style: TextStyle(color: Color(0xFFF4F9FC)),
+                        ),
+                        onPressed: () {
+                          _myGridsDataBaseConnector.deleteGrid(gridId);
+                          Navigator.of(context).pop(true);
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
-            actions: <Widget>[
-              TextButton(
-                child: Text('No, leave it.'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                child: Text('Yes, delete.'),
-                onPressed: () {
-                  _myGridsDataBaseConnector.deleteGrid(gridId);
-                  Navigator.of(context).pop(true);
-                },
-              ),
-            ],
           );
         },
       );

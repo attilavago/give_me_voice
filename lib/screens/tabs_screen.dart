@@ -20,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60),
+          preferredSize: Size.fromHeight(55),
           child: AppBar(
             elevation: 0,
             backgroundColor: Color(0xFFF4F9FC),
