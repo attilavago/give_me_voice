@@ -39,7 +39,23 @@ class _GridScreenState extends State<GridScreen> {
               var gridLabels = grid['labels'].toString().split(',');
               return Scaffold(
                 appBar: AppBar(
-                  title: Text(grid['name'].toString().capitalize()),
+                  elevation: 0,
+                  backgroundColor: Color(0xFFF4F9FC),
+                  title: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2BAE66),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Text(
+                        grid['name'].toString().capitalize(),
+                        style: TextStyle(color: Color(0xFFF4F9FC)),
+                      ),
+                    ),
+                  ),
                   automaticallyImplyLeading: !isDisabled,
                   actions: <Widget>[
                     Semantics(
@@ -48,6 +64,7 @@ class _GridScreenState extends State<GridScreen> {
                           : 'lock grid screen',
                       enabled: isDisabled ? false : true,
                       child: IconButton(
+                        color: Color(0xFF2BAE66),
                         icon: Icon(isDisabled ? Icons.lock : Icons.lock_open),
                         onPressed: () {
                           setState(() {

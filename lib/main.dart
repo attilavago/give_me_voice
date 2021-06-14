@@ -22,7 +22,7 @@ class GiveMeVoice extends StatelessWidget {
             fontFamily: 'Montserrat',
             scaffoldBackgroundColor: Color(0xFFF4F9FC),
             primaryIconTheme: IconThemeData(
-              color: Color(0xFFF4F9FC),
+              color: Color(0xFF2BAE66),
             ),
             textTheme: TextTheme(
               bodyText1: TextStyle(fontSize: 20.0),
