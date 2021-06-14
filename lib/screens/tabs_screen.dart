@@ -84,6 +84,8 @@ class _TabsScreenState extends State<TabsScreen> {
               Icons.add,
               color: Color(0xFF2BAE66),
             ),
+            shape: CircleBorder(
+                side: BorderSide(color: Color(0xFF2BAE66), width: 2)),
             onPressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,
