@@ -63,7 +63,7 @@ class _GridsScreenState extends State<GridsScreen> {
             var gridsCount = snapshot.data.length;
             var grids = snapshot.data;
             return Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,6 +114,8 @@ class _GridsScreenState extends State<GridsScreen> {
                                 ),
                               ),
                               child: Card(
+                                margin: EdgeInsets.only(
+                                    bottom: 15, left: 5, right: 5),
                                 elevation: 0,
                                 color: Color(0xFFF4F9FC),
                                 child: Container(
