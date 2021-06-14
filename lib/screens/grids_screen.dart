@@ -45,6 +45,8 @@ class _GridsScreenState extends State<GridsScreen> {
                     children: [
                       TextButton(
                         style: ButtonStyle(
+                            padding: MaterialStateProperty.all(
+                                EdgeInsets.only(left: 15, right: 15)),
                             backgroundColor:
                                 MaterialStateProperty.all(Color(0xFF2BAE66)),
                             shape: MaterialStateProperty.all<
@@ -54,7 +56,7 @@ class _GridsScreenState extends State<GridsScreen> {
                                     side:
                                         BorderSide(color: Color(0xFF2BAE66))))),
                         child: Text(
-                          'No, leave it.',
+                          'No, cancel.',
                           style: TextStyle(color: Color(0xFFF4F9FC)),
                         ),
                         onPressed: () {
@@ -63,6 +65,8 @@ class _GridsScreenState extends State<GridsScreen> {
                       ),
                       TextButton(
                         style: ButtonStyle(
+                            padding: MaterialStateProperty.all(
+                                EdgeInsets.only(left: 15, right: 15)),
                             backgroundColor:
                                 MaterialStateProperty.all(Color(0xFF2BAE66)),
                             shape: MaterialStateProperty.all(

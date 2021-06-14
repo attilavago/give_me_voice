@@ -79,7 +79,11 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
         floatingActionButton: FloatingActionButton(
             elevation: 1.0,
-            child: Icon(Icons.add),
+            backgroundColor: Color(0xFFF4F9FC),
+            child: Icon(
+              Icons.add,
+              color: Color(0xFF2BAE66),
+            ),
             onPressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,
@@ -91,7 +95,6 @@ class _TabsScreenState extends State<TabsScreen> {
                 context: context,
                 builder: (context) => Container(
                   height: 500,
-//                  padding: EdgeInsets.all(20.0),
                   child: AddGrid(),
                 ),
               );
